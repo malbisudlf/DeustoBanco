@@ -1,0 +1,7 @@
+ing_web/
+
+# cada uno debe tener la suya
+db.sqlite3
+
+__pycache__/
+*.pyc
