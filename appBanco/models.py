@@ -15,3 +15,24 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellidos}"
+
+
+class Cuenta(models.Model):
+    TIPOS_CUENTA = [
+        ("corriente", "Corriente"),
+        ("ahorro", "Ahorro"),
+    ]
+
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name="cuentas")
+    iban = models.CharField(max_length=34, unique=True)
+    tipo = models.CharField(max_length=20, choices=TIPOS_CUENTA, default="corriente")
+    saldo = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    fecha_apertura = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Cuenta"
+        verbose_name_plural = "Cuentas"
+
+
+    def __str__(self):
+        return f"{self.iban} ({self.cliente})"

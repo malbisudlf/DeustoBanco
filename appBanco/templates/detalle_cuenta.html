@@ -1,0 +1,6 @@
+<h1>{{ cuenta.iban }}</h1>
+
+<p>Cliente: <a href="{% url 'detalle_cliente' cuenta.cliente.pk %}">{{ cuenta.cliente }}</a></p>
+<p>Tipo: {{ cuenta.get_tipo_display }}</p>
+<p>Saldo: {{ cuenta.saldo }} €</p>
+<p>Fecha de apertura: {{ cuenta.fecha_apertura }}</p>

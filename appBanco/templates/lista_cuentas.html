@@ -1,0 +1,6 @@
+{% for cuenta in cuentas_listado %}
+    <p>
+        <a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a>
+        {{ cuenta.cliente }}
+    </p>
+{% endfor %}
