@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Cliente, Cuenta
+from .models import Cliente, Cuenta, Tarjeta
 
 def index(request):
     return HttpResponse('primera vista funcionando correctamente')
@@ -24,3 +24,13 @@ def detalle_cuenta(request, pk):
     cuenta = get_object_or_404(Cuenta, pk=pk)
     context = {'cuenta': cuenta}
     return render(request, 'detalle_cuenta.html', context)
+
+def lista_tarjetas(request):
+    tarjetas = Tarjeta.objects.select_related('cuenta')
+    context = {'tarjetas_listado': tarjetas}
+    return render(request, 'lista_tarjetas.html', context)
+
+def detalle_tarjeta(request, pk):
+    tarjeta = get_object_or_404(Tarjeta, pk=pk)
+    context = {'tarjeta': tarjeta}
+    return render(request, 'detalle_tarjeta.html', context)

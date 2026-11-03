@@ -1,0 +1,6 @@
+{% for tarjeta in tarjetas_listado %}
+    <p>
+        <a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a>
+        {{ tarjeta.cuenta }}
+    </p>
+{% endfor %}

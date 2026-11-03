@@ -36,3 +36,25 @@ class Cuenta(models.Model):
 
     def __str__(self):
         return f"{self.iban} ({self.cliente})"
+
+
+class Tarjeta(models.Model):
+    TIPOS_TARJETA = [
+        ("debito", "Débito"),
+        ("credito", "Crédito"),
+    ]
+
+    cuenta = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name="tarjetas")
+    numero = models.CharField(max_length=16, unique=True)
+    tipo = models.CharField(max_length=10, choices=TIPOS_TARJETA, default="debito")
+    fecha_caducidad = models.DateField()
+    activa = models.BooleanField(default=True)
+    limite_diario = models.DecimalField(max_digits=8, decimal_places=2, default=600)
+
+    class Meta:
+        verbose_name = "Tarjeta"
+        verbose_name_plural = "Tarjetas"
+
+
+    def __str__(self):
+        return f"{self.numero} ({self.get_tipo_display()})"
