@@ -1,6 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Cuenta {{ cuenta.iban }}{% endblock %}
+
+{% block content %}
 <h1>{{ cuenta.iban }}</h1>
 
 <p>Cliente: <a href="{% url 'detalle_cliente' cuenta.cliente.pk %}">{{ cuenta.cliente }}</a></p>
 <p>Tipo: {{ cuenta.get_tipo_display }}</p>
 <p>Saldo: {{ cuenta.saldo }} €</p>
 <p>Fecha de apertura: {{ cuenta.fecha_apertura }}</p>
+
+<h2>Tarjetas</h2>
+<ul>
+    {% for tarjeta in cuenta.tarjetas.all %}
+        <li><a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a></li>
+    {% empty %}
+        <p>No hay tarjetas asociadas.</p>
+    {% endfor %}
+</ul>
+
+<h2>Movimientos</h2>
+<ul>
+    {% for movimiento in cuenta.movimientos.all %}
+        <li><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a></li>
+    {% empty %}
+        <p>No hay movimientos registrados.</p>
+    {% endfor %}
+</ul>
+
+<p><a href="{% url 'lista_cuentas' %}">Volver a la lista de cuentas</a></p>
+{% endblock %}

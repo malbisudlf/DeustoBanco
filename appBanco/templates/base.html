@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Deusto Banco{% endblock %} - Deusto Banco</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'appBanco/estilos.css' %}">
+</head>
+<body>
+    <div id="main">
+        <!-- CABECERA -->
+        <header id="header">
+            <h1><a href="{% url 'principal' %}">Deusto<span class="logo_acento">Banco</span></a></h1>
+            <nav id="menubar">
+                <ul id="menu">
+                    <li><a href="{% url 'principal' %}">Inicio</a></li>
+                    <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
+                    <li><a href="{% url 'lista_cuentas' %}">Cuentas</a></li>
+                    <li><a href="{% url 'lista_tarjetas' %}">Tarjetas</a></li>
+                    <li><a href="{% url 'lista_movimientos' %}">Movimientos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main id="content">
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- PIE DE PÁGINA -->
+        <footer id="footer">
+            <p>Deusto Banco - Proyecto de Ingeniería Web 2026-27</p>
+        </footer>
+    </div>
+</body>
+</html>

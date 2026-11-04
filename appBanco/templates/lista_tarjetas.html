@@ -1,6 +1,18 @@
-{% for tarjeta in tarjetas_listado %}
-    <p>
-        <a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a>
-        {{ tarjeta.cuenta }}
-    </p>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Tarjetas{% endblock %}
+
+{% block content %}
+<h1>Tarjetas</h1>
+
+<ul>
+    {% for tarjeta in tarjetas_listado %}
+        <li>
+            <a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a>
+            — {{ tarjeta.cuenta.iban }} ({{ tarjeta.get_tipo_display }})
+        </li>
+    {% empty %}
+        <li>No hay tarjetas registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h1>Deusto Banco</h1>
+
+<p>Selecciona una sección para ver los listados:</p>
+
+<ul>
+    <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
+    <li><a href="{% url 'lista_cuentas' %}">Cuentas</a></li>
+    <li><a href="{% url 'lista_tarjetas' %}">Tarjetas</a></li>
+    <li><a href="{% url 'lista_movimientos' %}">Movimientos</a></li>
+</ul>
+{% endblock %}

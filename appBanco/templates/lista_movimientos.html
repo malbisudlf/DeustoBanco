@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Movimientos{% endblock %}
+
+{% block content %}
+<h1>Movimientos</h1>
+
+<ul>
+    {% for movimiento in movimientos_listado %}
+        <li>
+            <a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a>
+            — {{ movimiento.cuenta.iban }} ({{ movimiento.get_tipo_display }})
+        </li>
+    {% empty %}
+        <li>No hay movimientos registrados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

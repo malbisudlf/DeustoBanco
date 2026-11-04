@@ -58,3 +58,24 @@ class Tarjeta(models.Model):
 
     def __str__(self):
         return f"{self.numero} ({self.get_tipo_display()})"
+
+
+class Movimiento(models.Model):
+    TIPOS_MOVIMIENTO = [
+        ("ingreso", "Ingreso"),
+        ("gasto", "Gasto"),
+    ]
+
+    cuenta = models.ForeignKey(Cuenta, on_delete=models.CASCADE, related_name="movimientos")
+    concepto = models.CharField(max_length=100)
+    tipo = models.CharField(max_length=10, choices=TIPOS_MOVIMIENTO, default="ingreso")
+    importe = models.DecimalField(max_digits=12, decimal_places=2)
+    fecha = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Movimiento"
+        verbose_name_plural = "Movimientos"
+
+
+    def __str__(self):
+        return f"{self.concepto} ({self.get_tipo_display()})"

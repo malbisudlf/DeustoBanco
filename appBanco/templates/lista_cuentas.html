@@ -1,6 +1,18 @@
-{% for cuenta in cuentas_listado %}
-    <p>
-        <a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a>
-        {{ cuenta.cliente }}
-    </p>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Cuentas{% endblock %}
+
+{% block content %}
+<h1>Cuentas</h1>
+
+<ul>
+    {% for cuenta in cuentas_listado %}
+        <li>
+            <a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a>
+            — {{ cuenta.cliente }}
+        </li>
+    {% empty %}
+        <li>No hay cuentas registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

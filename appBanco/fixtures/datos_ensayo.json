@@ -1,0 +1,125 @@
+[
+  {
+    "model": "appBanco.cliente",
+    "pk": 1,
+    "fields": {
+      "nombre": "Amaia",
+      "apellidos": "Etxeberria",
+      "email": "amaia@example.com",
+      "telefono": "600111222",
+      "fecha_alta": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 2,
+    "fields": {
+      "nombre": "Iker",
+      "apellidos": "Mendia",
+      "email": "iker@example.com",
+      "telefono": "600333444",
+      "fecha_alta": "2026-09-20"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "iban": "ES91 2100 0418 4502 0005 1332",
+      "tipo": "corriente",
+      "saldo": 1250.75,
+      "fecha_apertura": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 2,
+    "fields": {
+      "cliente": 1,
+      "iban": "ES44 2100 0418 4502 0005 1333",
+      "tipo": "ahorro",
+      "saldo": 3400.00,
+      "fecha_apertura": "2026-09-16"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 3,
+    "fields": {
+      "cliente": 2,
+      "iban": "ES77 2100 0418 4502 0005 1334",
+      "tipo": "corriente",
+      "saldo": 580.20,
+      "fecha_apertura": "2026-09-20"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 1,
+    "fields": {
+      "cuenta": 1,
+      "numero": "4411223344556677",
+      "tipo": "debito",
+      "fecha_caducidad": "2029-06-30",
+      "activa": true,
+      "limite_diario": 600.00
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 2,
+    "fields": {
+      "cuenta": 3,
+      "numero": "5500112233449988",
+      "tipo": "credito",
+      "fecha_caducidad": "2028-11-30",
+      "activa": true,
+      "limite_diario": 1500.00
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 1,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Nómina septiembre",
+      "tipo": "ingreso",
+      "importe": 1850.00,
+      "fecha": "2026-09-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 2,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Alquiler septiembre",
+      "tipo": "gasto",
+      "importe": 600.00,
+      "fecha": "2026-10-02"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 3,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Compra supermercado",
+      "tipo": "gasto",
+      "importe": 84.35,
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 4,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Transferencia recibida",
+      "tipo": "ingreso",
+      "importe": 120.00,
+      "fecha": "2026-10-08"
+    }
+  }
+]

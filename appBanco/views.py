@@ -1,9 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from .models import Cliente, Cuenta, Tarjeta
+from .models import Cliente, Cuenta, Tarjeta, Movimiento
 
 def index(request):
-    return HttpResponse('primera vista funcionando correctamente')
+    return render(request, 'index.html')
 
 def lista_clientes(request):
     clientes = Cliente.objects.all()
@@ -34,3 +33,13 @@ def detalle_tarjeta(request, pk):
     tarjeta = get_object_or_404(Tarjeta, pk=pk)
     context = {'tarjeta': tarjeta}
     return render(request, 'detalle_tarjeta.html', context)
+
+def lista_movimientos(request):
+    movimientos = Movimiento.objects.select_related('cuenta')
+    context = {'movimientos_listado': movimientos}
+    return render(request, 'lista_movimientos.html', context)
+
+def detalle_movimiento(request, pk):
+    movimiento = get_object_or_404(Movimiento, pk=pk)
+    context = {'movimiento': movimiento}
+    return render(request, 'detalle_movimiento.html', context)

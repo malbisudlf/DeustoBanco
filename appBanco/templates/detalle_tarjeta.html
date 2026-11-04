@@ -1,3 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Tarjeta {{ tarjeta.numero }}{% endblock %}
+
+{% block content %}
 <h1>{{ tarjeta.numero }}</h1>
 
 <p>Cuenta: <a href="{% url 'detalle_cuenta' tarjeta.cuenta.pk %}">{{ tarjeta.cuenta.iban }}</a></p>
@@ -5,3 +10,6 @@
 <p>Caducidad: {{ tarjeta.fecha_caducidad }}</p>
 <p>Estado: {% if tarjeta.activa %}Activa{% else %}Bloqueada{% endif %}</p>
 <p>Límite diario: {{ tarjeta.limite_diario }} €</p>
+
+<p><a href="{% url 'lista_tarjetas' %}">Volver a la lista de tarjetas</a></p>
+{% endblock %}
