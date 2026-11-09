@@ -12,4 +12,8 @@ urlpatterns = [
     path('tarjetas/<int:pk>/', views.detalle_tarjeta, name='detalle_tarjeta'),
     path('movimientos/', views.lista_movimientos, name='lista_movimientos'),
     path('movimientos/<int:pk>/', views.detalle_movimiento, name='detalle_movimiento'),
+    path('sobre/', views.pagina_sobre, name='sobre'),
+    path('contacto/', views.pagina_contacto, name='contacto'),
+    path('accounts/login/', views.login, name='login'),
+    path('accounts/logout/', views.logout, name='logout'),
 ]

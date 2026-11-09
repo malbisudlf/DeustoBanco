@@ -28,5 +28,12 @@
     {% endfor %}
 </ul>
 
+<h2>Nuevo movimiento</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Añadir movimiento</button>
+</form>
+
 <p><a href="{% url 'lista_cuentas' %}">Volver a la lista de cuentas</a></p>
 {% endblock %}

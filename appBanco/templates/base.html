@@ -12,7 +12,7 @@
     <div id="main">
         <!-- CABECERA -->
         <header id="header">
-            <h1><a href="{% url 'principal' %}">Deusto<span class="logo_acento">Banco</span></a></h1>
+            <h1><a href="{% url 'principal' %}"><img src="{% static 'appBanco/img/logo.svg' %}" alt="Deusto Banco" height="40"></a></h1>
             <nav id="menubar">
                 <ul id="menu">
                     <li><a href="{% url 'principal' %}">Inicio</a></li>
@@ -20,6 +20,15 @@
                     <li><a href="{% url 'lista_cuentas' %}">Cuentas</a></li>
                     <li><a href="{% url 'lista_tarjetas' %}">Tarjetas</a></li>
                     <li><a href="{% url 'lista_movimientos' %}">Movimientos</a></li>
+                    <li><a href="{% url 'sobre' %}">El banco</a></li>
+                    <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                    {% if user.is_authenticated %}
+                    <li>{{ user.username }}
+                        <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Cerrar sesión</button></form>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

@@ -70,7 +70,7 @@ class Movimiento(models.Model):
     concepto = models.CharField(max_length=100)
     tipo = models.CharField(max_length=10, choices=TIPOS_MOVIMIENTO, default="ingreso")
     importe = models.DecimalField(max_digits=12, decimal_places=2)
-    fecha = models.DateField(auto_now_add=True)
+    fecha = models.DateField()
 
     class Meta:
         verbose_name = "Movimiento"

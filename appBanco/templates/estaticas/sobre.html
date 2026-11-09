@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Quiénes somos{% endblock %}
+
+{% block content %}
+<h1>Quiénes somos</h1>
+
+<img src="{% static 'appBanco/img/banco.svg' %}" alt="Fachada de Deusto Banco" width="320" height="200">
+
+<p>Deusto Banco es la entidad bancaria del proyecto de Ingeniería Web. Ofrece cuentas
+corrientes y de ahorro, tarjetas de débito y crédito, y el seguimiento de los movimientos
+de cada cuenta.</p>
+
+<p><a href="{% url 'contacto' %}">Contacto</a></p>
+{% endblock %}
