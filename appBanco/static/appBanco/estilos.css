@@ -84,3 +84,36 @@ button {
   text-decoration: underline;
   font-size: 1em;
 }
+
+.filtro-movimientos label {
+  margin-right: 0.5rem;
+}
+
+.filtro-movimientos select {
+  padding: 0.35rem 0.5rem;
+  font: inherit;
+}
+
+.contenedor-tabla-movimientos {
+  overflow-x: auto;
+}
+
+.tabla-movimientos {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabla-movimientos th,
+.tabla-movimientos td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #dce2e8;
+}
+
+.tabla-movimientos th {
+  background: #f4f6f8;
+}
+
+.tabla-movimientos tbody[aria-busy="true"] {
+  opacity: 0.55;
+}
