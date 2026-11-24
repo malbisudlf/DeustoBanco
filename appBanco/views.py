@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.db.models import Sum
-from django.views.generic import TemplateView
+from django.views.generic import DetailView, ListView, TemplateView
 from .models import Cliente, Cuenta, Tarjeta, Movimiento
 from .forms import FiltroMovimientosForm, MovimientoForm
 
@@ -11,17 +11,19 @@ def index(request):
     return render(request, 'index.html')
 
 
-def lista_clientes(request):
-    clientes = Cliente.objects.all()
-    context = {'clientes_listado': clientes}
-    return render(request, 'lista_clientes.html', context)
+class ClientesListView(ListView):
+    model = Cliente
+    context_object_name = 'clientes_listado'
+    template_name = 'lista_clientes.html'
 
 
-def detalle_cliente(request, pk):
-    clientes = Cliente.objects.annotate(saldo_total=Sum('cuentas__saldo', default=0))
-    cliente = get_object_or_404(clientes, pk=pk)
-    context = {'cliente': cliente}
-    return render(request, 'detalle_cliente.html', context)
+class ClienteDetailView(DetailView):
+    model = Cliente
+    context_object_name = 'cliente'
+    template_name = 'detalle_cliente.html'
+
+    def get_queryset(self):
+        return Cliente.objects.annotate(saldo_total=Sum('cuentas__saldo', default=0))
 
 
 def lista_cuentas(request):
@@ -45,16 +47,19 @@ def detalle_cuenta(request, pk):
     return render(request, 'detalle_cuenta.html', context)
 
 
-def lista_tarjetas(request):
-    tarjetas = Tarjeta.objects.select_related('cuenta')
-    context = {'tarjetas_listado': tarjetas}
-    return render(request, 'lista_tarjetas.html', context)
+class TarjetasListView(ListView):
+    model = Tarjeta
+    context_object_name = 'tarjetas_listado'
+    template_name = 'lista_tarjetas.html'
+
+    def get_queryset(self):
+        return Tarjeta.objects.select_related('cuenta')
 
 
-def detalle_tarjeta(request, pk):
-    tarjeta = get_object_or_404(Tarjeta, pk=pk)
-    context = {'tarjeta': tarjeta}
-    return render(request, 'detalle_tarjeta.html', context)
+class TarjetaDetailView(DetailView):
+    model = Tarjeta
+    context_object_name = 'tarjeta'
+    template_name = 'detalle_tarjeta.html'
 
 
 def lista_movimientos(request):

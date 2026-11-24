@@ -136,6 +136,19 @@ button {
   white-space: nowrap;
 }
 
-#resultados-movimientos[aria-busy="true"] {
-  opacity: 0.55;
+@keyframes aparecer-fila {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+}
+
+#resultados-movimientos.actualizado .tabla-movimientos tbody tr {
+  animation: aparecer-fila 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #resultados-movimientos.actualizado .tabla-movimientos tbody tr {
+    animation: none;
+  }
 }

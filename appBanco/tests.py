@@ -1,10 +1,11 @@
 from datetime import date
 from decimal import Decimal
 
+from django.contrib.auth.models import Group, User
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Cliente, Cuenta, Movimiento
+from .models import Cliente, Cuenta, Movimiento, Tarjeta
 
 
 class ListadoMovimientosTests(TestCase):
@@ -33,7 +34,7 @@ class ListadoMovimientosTests(TestCase):
             [self.gasto_posterior, self.gasto_final, self.ingreso, self.gasto_inicial],
         )
         self.assertContains(respuesta, '30/11/2026')
-        self.assertContains(respuesta, '22.50 €')
+        self.assertContains(respuesta, '22,50 €')
 
     def test_combina_tipo_y_rango_inclusivo(self):
         respuesta = self.client.get(reverse('lista_movimientos'), {
@@ -82,7 +83,7 @@ class SaldoCuentaTests(TestCase):
 
         self.assertRedirects(ingreso, url)
         self.assertContains(ingreso, 'Ingreso registrado. El saldo se ha actualizado.')
-        self.assertContains(ingreso, '150.00 €')
+        self.assertContains(ingreso, '150,00 €')
         self.assertSaldos('150', '300')
 
         gasto = self.client.post(url, {
@@ -95,7 +96,7 @@ class SaldoCuentaTests(TestCase):
         self.assertEqual(self.cuenta.movimientos.count(), 2)
         self.assertSaldos('130', '300')
         cliente = self.client.get(reverse('detalle_cliente', args=[self.cliente.pk]))
-        self.assertContains(cliente, 'Saldo total: 430.00 €')
+        self.assertContains(cliente, 'Saldo total: 430,00 €')
 
     def test_formulario_muestra_calendario_y_avisa_si_faltan_datos(self):
         url = reverse('detalle_cuenta', args=[self.cuenta.pk])
@@ -136,3 +137,72 @@ class SaldoCuentaTests(TestCase):
 
         Movimiento.objects.filter(pk=movimiento.pk).delete()
         self.assertSaldos('100', '300')
+
+
+class VistasBasadasEnClasesTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.cliente = Cliente.objects.create(nombre='Ana', apellidos='Pérez', email='ana@example.test')
+        cls.cuenta = Cuenta.objects.create(cliente=cls.cliente, iban='ES000010', saldo=Decimal('25'))
+        cls.tarjeta = Tarjeta.objects.create(
+            cuenta=cls.cuenta, numero='4111111111111111', fecha_caducidad=date(2027, 1, 1),
+        )
+
+    def test_listado_y_detalle_de_clientes(self):
+        listado = self.client.get(reverse('lista_clientes'))
+
+        self.assertQuerySetEqual(listado.context['clientes_listado'], [self.cliente])
+        self.assertContains(listado, 'Ana Pérez')
+
+        detalle = self.client.get(reverse('detalle_cliente', args=[self.cliente.pk]))
+        self.assertEqual(detalle.context['cliente'].saldo_total, Decimal('25'))
+        self.assertContains(detalle, 'Saldo total: 25,00 €')
+
+    def test_listado_y_detalle_de_tarjetas(self):
+        listado = self.client.get(reverse('lista_tarjetas'))
+
+        self.assertQuerySetEqual(listado.context['tarjetas_listado'], [self.tarjeta])
+        self.assertContains(listado, 'ES000010')
+
+        detalle = self.client.get(reverse('detalle_tarjeta', args=[self.tarjeta.pk]))
+        self.assertEqual(detalle.context['tarjeta'], self.tarjeta)
+        self.assertContains(detalle, '4111111111111111')
+
+
+class RolesAdminTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cliente = Cliente.objects.create(nombre='Ana', apellidos='Pérez', email='ana@example.test')
+        cuenta = Cuenta.objects.create(cliente=cliente, iban='ES000011')
+        cls.movimiento = Movimiento.objects.create(
+            cuenta=cuenta, concepto='Cine', tipo='gasto', importe=Decimal('9.50'), fecha=date(2026, 11, 1),
+        )
+        cls.consulta = User.objects.create_user('consulta', password='clave', is_staff=True)
+        cls.consulta.groups.add(Group.objects.get(name='Consulta de movimientos'))
+        cls.editor = User.objects.create_user('editor', password='clave', is_staff=True)
+        cls.editor.groups.add(Group.objects.get(name='Edición de movimientos'))
+
+    def test_consulta_solo_puede_ver_los_movimientos(self):
+        self.client.force_login(self.consulta)
+
+        listado = self.client.get(reverse('admin:appBanco_movimiento_changelist'))
+        self.assertEqual(listado.status_code, 200)
+        self.assertNotContains(listado, reverse('admin:appBanco_movimiento_add'))
+
+        añadir = self.client.get(reverse('admin:appBanco_movimiento_add'))
+        self.assertEqual(añadir.status_code, 403)
+
+        cambiar = self.client.post(
+            reverse('admin:appBanco_movimiento_change', args=[self.movimiento.pk]),
+            {'concepto': 'Cine', 'tipo': 'gasto', 'importe': '9.50', 'fecha': '2026-11-01'},
+        )
+        self.assertEqual(cambiar.status_code, 403)
+
+    def test_editor_puede_cambiar_los_movimientos(self):
+        self.client.force_login(self.editor)
+
+        listado = self.client.get(reverse('admin:appBanco_movimiento_changelist'))
+        self.assertContains(listado, reverse('admin:appBanco_movimiento_add'))
+
+        añadir = self.client.get(reverse('admin:appBanco_movimiento_add'))
+        self.assertEqual(añadir.status_code, 200)

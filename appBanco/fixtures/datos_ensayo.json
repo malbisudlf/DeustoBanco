@@ -25,7 +25,7 @@
   "model": "appBanco.cliente",
   "pk": 3,
   "fields": {
-    "nombre": "César Manuel",
+    "nombre": "CÃ©sar Manuel",
     "apellidos": "Llata",
     "email": "mrsubidito@gmail.com",
     "telefono": "663631373",
@@ -117,7 +117,7 @@
   "pk": 1,
   "fields": {
     "cuenta": 1,
-    "concepto": "Nómina septiembre",
+    "concepto": "NÃ³mina septiembre",
     "tipo": "ingreso",
     "importe": "1850.00",
     "fecha": "2026-09-30"
