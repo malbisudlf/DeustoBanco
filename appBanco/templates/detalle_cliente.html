@@ -9,9 +9,10 @@
 <p>Teléfono: {{ cliente.telefono }}</p>
 
 <h2>Cuentas</h2>
+<p>Saldo total: {{ cliente.saldo_total|floatformat:2 }} €</p>
 <ul>
     {% for cuenta in cliente.cuentas.all %}
-        <li><a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a></li>
+        <li><a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a> · {{ cuenta.saldo|floatformat:2 }} €</li>
     {% empty %}
         <p>No hay cuentas asociadas.</p>
     {% endfor %}

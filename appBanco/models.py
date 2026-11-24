@@ -1,4 +1,8 @@
-from django.db import models
+from django.core.exceptions import ValidationError
+from django.db import models, router, transaction
+from django.db.models import F
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
 
 # Create your models here.
 class Cliente(models.Model):
@@ -76,6 +80,51 @@ class Movimiento(models.Model):
         verbose_name = "Movimiento"
         verbose_name_plural = "Movimientos"
 
+    def clean(self):
+        super().clean()
+        if self.importe is not None and self.importe <= 0:
+            raise ValidationError({'importe': 'Introduce un importe mayor que cero.'})
+
+    @property
+    def variacion_saldo(self):
+        return -self.importe if self.tipo == 'gasto' else self.importe
+
+    def save(self, *, force_insert=False, force_update=False, using=None, update_fields=None):
+        if update_fields is not None:
+            update_fields = frozenset(update_fields)
+            if not update_fields:
+                return
+
+        using = using or router.db_for_write(type(self), instance=self)
+        movimientos = type(self).objects.using(using)
+        with transaction.atomic(using=using):
+            anterior = None
+            if self.pk is not None and not force_insert:
+                anterior = movimientos.select_for_update().filter(pk=self.pk).first()
+
+            super().save(
+                force_insert=force_insert, force_update=force_update,
+                using=using, update_fields=update_fields,
+            )
+            guardado = movimientos.get(pk=self.pk)
+            variaciones = {guardado.cuenta_id: guardado.variacion_saldo}
+            if anterior is not None:
+                variaciones[anterior.cuenta_id] = (
+                    variaciones.get(anterior.cuenta_id, 0) - anterior.variacion_saldo
+                )
+
+            for cuenta_id, variacion in sorted(variaciones.items()):
+                if variacion:
+                    Cuenta.objects.using(using).filter(pk=cuenta_id).update(saldo=F('saldo') + variacion)
 
     def __str__(self):
         return f"{self.concepto} ({self.get_tipo_display()})"
+
+
+@receiver(pre_delete, sender=Movimiento)
+def revertir_saldo_al_borrar_movimiento(sender, instance, using, **kwargs):
+    movimiento = sender.objects.using(using).select_for_update().filter(pk=instance.pk).first()
+    if movimiento is not None:
+        Cuenta.objects.using(using).filter(pk=movimiento.cuenta_id).update(
+            saldo=F('saldo') - movimiento.variacion_saldo,
+        )

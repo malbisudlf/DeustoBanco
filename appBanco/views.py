@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.contrib.auth import views as auth_views
+from django.db.models import Sum
 from django.views.generic import TemplateView
 from .models import Cliente, Cuenta, Tarjeta, Movimiento
 from .forms import FiltroMovimientosForm, MovimientoForm
@@ -16,7 +18,8 @@ def lista_clientes(request):
 
 
 def detalle_cliente(request, pk):
-    cliente = get_object_or_404(Cliente, pk=pk)
+    clientes = Cliente.objects.annotate(saldo_total=Sum('cuentas__saldo', default=0))
+    cliente = get_object_or_404(clientes, pk=pk)
     context = {'cliente': cliente}
     return render(request, 'detalle_cliente.html', context)
 
@@ -36,6 +39,8 @@ def detalle_cuenta(request, pk):
             movimiento = form.save(commit=False)
             movimiento.cuenta = cuenta
             movimiento.save()
+            messages.success(request, f'{movimiento.get_tipo_display()} registrado. El saldo se ha actualizado.')
+            return redirect('detalle_cuenta', pk=cuenta.pk)
     context = {'cuenta': cuenta, 'form': form}
     return render(request, 'detalle_cuenta.html', context)
 

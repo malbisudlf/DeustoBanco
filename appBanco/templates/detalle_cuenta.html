@@ -5,6 +5,10 @@
 {% block content %}
 <h1>{{ cuenta.iban }}</h1>
 
+{% for mensaje in messages %}
+    <p role="status">{{ mensaje }}</p>
+{% endfor %}
+
 <p>Cliente: <a href="{% url 'detalle_cliente' cuenta.cliente.pk %}">{{ cuenta.cliente }}</a></p>
 <p>Tipo: {{ cuenta.get_tipo_display }}</p>
 <p>Saldo: {{ cuenta.saldo }} €</p>
@@ -31,6 +35,9 @@
 <h2>Nuevo movimiento</h2>
 <form method="post">
   {% csrf_token %}
+  {% if form.errors %}
+    <p role="alert">No se ha guardado el movimiento. Revisa los campos indicados.</p>
+  {% endif %}
   {{ form.as_p }}
   <button type="submit">Añadir movimiento</button>
 </form>
