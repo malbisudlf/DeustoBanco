@@ -1,19 +1,21 @@
 (() => {
-    const filtro = document.querySelector("#tipo-movimiento");
+    const formulario = document.querySelector("#filtro-movimientos");
     const resultados = document.querySelector("#resultados-movimientos");
     const estado = document.querySelector("#estado-movimientos");
-    const sinResultados = document.querySelector("#sin-resultados-movimientos");
     let peticionActiva;
-    let tipoAplicado = filtro.value;
 
-    filtro.addEventListener("change", async () => {
+    formulario.addEventListener("change", () => formulario.requestSubmit());
+
+    formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
         peticionActiva?.abort();
         const control = new AbortController();
         peticionActiva = control;
-        const tipo = filtro.value;
-        const url = new URL(filtro.dataset.url, window.location.origin);
-        if (tipo) {
-            url.searchParams.set("tipo", tipo);
+        const url = new URL(formulario.action);
+        for (const [nombre, valor] of new FormData(formulario)) {
+            if (valor) {
+                url.searchParams.set(nombre, valor);
+            }
         }
 
         estado.textContent = "Cargando movimientos…";
@@ -34,24 +36,30 @@
                 return;
             }
 
-            // El listado actual sirve para probar la interfaz antes de añadir el filtro en Django.
-            const filas = Array.from(nuevosResultados.querySelectorAll("tr[data-tipo]"));
-            const coincidencias = filas.filter((fila) => !tipo || fila.dataset.tipo === tipo);
-            if (coincidencias.length) {
-                resultados.replaceChildren(...coincidencias);
+            const errores = nuevosResultados.querySelector(".errores-filtro-movimientos");
+            const cantidad = nuevosResultados.querySelectorAll("[data-movimiento]").length;
+            resultados.replaceChildren(...nuevosResultados.childNodes);
+            for (const campo of formulario.querySelectorAll("[name]")) {
+                const idError = `${campo.id}_error`;
+                if (document.getElementById(idError)) {
+                    campo.setAttribute("aria-invalid", "true");
+                    campo.setAttribute("aria-describedby", idError);
+                } else {
+                    campo.removeAttribute("aria-invalid");
+                    campo.removeAttribute("aria-describedby");
+                }
+            }
+            if (errores) {
+                estado.textContent = "Revisa los filtros para buscar movimientos.";
             } else {
-                resultados.replaceChildren(sinResultados.content.cloneNode(true));
+                estado.textContent = cantidad === 1
+                    ? "1 movimiento encontrado."
+                    : `${cantidad} movimientos encontrados.`;
             }
-            tipoAplicado = tipo;
-            estado.textContent = coincidencias.length === 1
-                ? "1 movimiento encontrado."
-                : `${coincidencias.length} movimientos encontrados.`;
-        } catch (error) {
-            if (control.signal.aborted) {
-                return;
+        } catch {
+            if (!control.signal.aborted) {
+                estado.textContent = "No se pudo actualizar el listado. Pulsa «Aplicar filtros» para reintentar.";
             }
-            filtro.value = tipoAplicado;
-            estado.textContent = "No se pudo actualizar el listado. Vuelve a seleccionar el filtro para reintentar.";
         } finally {
             if (peticionActiva === control) {
                 resultados.removeAttribute("aria-busy");
@@ -59,6 +67,4 @@
             }
         }
     });
-
-    document.querySelector("#filtro-movimientos").hidden = false;
 })();

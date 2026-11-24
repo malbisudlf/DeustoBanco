@@ -6,41 +6,57 @@
 {% block content %}
 <h1>Movimientos</h1>
 
-<div id="filtro-movimientos" class="filtro-movimientos" hidden>
-    <label for="tipo-movimiento">Tipo de movimiento</label>
-    <select id="tipo-movimiento" data-url="{% url 'lista_movimientos' %}">
-        <option value="">Todos</option>
-        <option value="ingreso">Ingresos</option>
-        <option value="gasto">Gastos</option>
-    </select>
-</div>
+<form id="filtro-movimientos" class="filtro-movimientos" method="get" action="{% url 'lista_movimientos' %}">
+    {% for campo in filtro %}
+        <div>
+            {{ campo.label_tag }}
+            {{ campo }}
+        </div>
+    {% endfor %}
+    <button type="submit">Aplicar filtros</button>
+</form>
 <p id="estado-movimientos" role="status"></p>
 
-<div class="contenedor-tabla-movimientos">
-    <table class="tabla-movimientos" aria-label="Listado de movimientos">
-        <thead>
-            <tr>
-                <th scope="col">Concepto</th>
-                <th scope="col">Cuenta</th>
-                <th scope="col">Tipo</th>
-            </tr>
-        </thead>
-        <tbody id="resultados-movimientos">
-            {% for movimiento in movimientos_listado %}
-                <tr data-tipo="{{ movimiento.tipo }}">
-                    <td><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a></td>
-                    <td>{{ movimiento.cuenta.iban }}</td>
-                    <td>{{ movimiento.get_tipo_display }}</td>
-                </tr>
-            {% empty %}
-                <tr><td colspan="3">No hay movimientos registrados.</td></tr>
+<div id="resultados-movimientos">
+    {% if filtro.errors %}
+        <ul class="errores-filtro-movimientos">
+            {% for campo in filtro %}
+                {% if campo.errors %}
+                    <li id="{{ campo.auto_id }}_error">
+                        <a href="#{{ campo.id_for_label }}">{{ campo.errors|join:' ' }}</a>
+                    </li>
+                {% endif %}
             {% endfor %}
-        </tbody>
-    </table>
+        </ul>
+    {% else %}
+        <div class="contenedor-tabla-movimientos">
+            <table class="tabla-movimientos" aria-label="Listado de movimientos">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Concepto</th>
+                        <th scope="col">Cuenta</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col" class="importe-movimiento">Importe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for movimiento in movimientos_listado %}
+                        <tr data-movimiento>
+                            <td><time datetime="{{ movimiento.fecha|date:'Y-m-d' }}">{{ movimiento.fecha|date:'d/m/Y' }}</time></td>
+                            <td><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a></td>
+                            <td>{{ movimiento.cuenta.iban }}</td>
+                            <td>{{ movimiento.get_tipo_display }}</td>
+                            <td class="importe-movimiento">{{ movimiento.importe|floatformat:2 }} €</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="5">No se encontraron movimientos.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
 </div>
 
-<template id="sin-resultados-movimientos">
-    <tr><td colspan="3">No hay movimientos para este filtro.</td></tr>
-</template>
 <script src="{% static 'appBanco/filtro_movimientos.js' %}" defer></script>
 {% endblock %}

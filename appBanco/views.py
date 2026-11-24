@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
 from .models import Cliente, Cuenta, Tarjeta, Movimiento
-from .forms import MovimientoForm
+from .forms import FiltroMovimientosForm, MovimientoForm
 
 
 def index(request):
@@ -53,8 +53,21 @@ def detalle_tarjeta(request, pk):
 
 
 def lista_movimientos(request):
-    movimientos = Movimiento.objects.select_related('cuenta')
-    context = {'movimientos_listado': movimientos}
+    filtro = FiltroMovimientosForm(request.GET)
+    movimientos = Movimiento.objects.select_related('cuenta').order_by('-fecha', '-pk')
+    if filtro.is_valid():
+        tipo = filtro.cleaned_data['tipo']
+        desde = filtro.cleaned_data['desde']
+        hasta = filtro.cleaned_data['hasta']
+        if tipo:
+            movimientos = movimientos.filter(tipo=tipo)
+        if desde:
+            movimientos = movimientos.filter(fecha__gte=desde)
+        if hasta:
+            movimientos = movimientos.filter(fecha__lte=hasta)
+    else:
+        movimientos = movimientos.none()
+    context = {'movimientos_listado': movimientos, 'filtro': filtro}
     return render(request, 'lista_movimientos.html', context)
 
 
