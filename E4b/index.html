@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda de contactos</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script type="application/ld+json" id="datos-estructurados"></script>
+</head>
+<body>
+    <div id="app" class="agenda">
+        <header class="cabecera" vocab="https://schema.org/" typeof="WebApplication">
+            <h1 property="name">Agenda de contactos</h1>
+            <p class="subtitulo" property="description">Muestra, crea y borra contactos de tu agenda.</p>
+            <meta property="applicationCategory" content="BusinessApplication">
+        </header>
+
+        <main class="contenido">
+            <form class="alta" @submit.prevent="agregar">
+                <h2>Añadir contacto</h2>
+                <div class="campos">
+                    <label>Nombre
+                        <input v-model.trim="nuevo.nombre" type="text" name="nombre" required>
+                    </label>
+                    <label>Email
+                        <input v-model.trim="nuevo.email" type="email" name="email" required>
+                    </label>
+                    <label>Teléfono
+                        <input v-model.trim="nuevo.telefono" type="tel" name="telefono">
+                    </label>
+                </div>
+                <button type="submit">Guardar contacto</button>
+                <p v-if="aviso" class="aviso" role="alert">{{ aviso }}</p>
+            </form>
+
+            <section class="listado" aria-labelledby="titulo-contactos">
+                <h2 id="titulo-contactos">Contactos ({{ contactos.length }})</h2>
+                <p v-if="contactos.length === 0" class="vacio">La agenda está vacía.</p>
+                <ul v-else id="lista-contactos" itemscope itemtype="https://schema.org/ItemList">
+                    <li v-for="contacto in contactos" :key="contacto.id" class="contacto"
+                        itemprop="itemListElement" itemscope itemtype="https://schema.org/Person">
+                        <div class="datos">
+                            <strong itemprop="name">{{ contacto.nombre }}</strong>
+                            <a :href="'mailto:' + contacto.email" itemprop="email">{{ contacto.email }}</a>
+                            <span itemprop="telephone">{{ contacto.telefono }}</span>
+                        </div>
+                        <button type="button" class="borrar"
+                                :aria-label="'Borrar a ' + contacto.nombre"
+                                @click="borrar(contacto.id)">Borrar</button>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script src="vendor/vue.global.prod.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

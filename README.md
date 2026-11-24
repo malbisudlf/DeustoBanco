@@ -1,32 +1,22 @@
-# DeustoBanco
+# DeustoBanco — Proyecto de Ingeniería Web (E4)
 
-Proyecto web colaborativo de Ingeniería Web (2026-27): gestión bancaria con Django.
+Repositorio de la entrega E4 del proyecto web colaborativo. La estructura está pensada para que
+el comprimido de entrega (`IW-<grupo>-E4.zip`) se genere directamente desde el repositorio.
 
-## Puesta en marcha
-
-```bash
-python -m venv ing_web
-source ing_web/bin/activate
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver
+```
+.
+├── E4a/      Proyecto Django (E4a): funcionalidades añadidas sobre DeustoBanco
+├── E4b/      SPA de contactos con Vue (E4b)
+└── memoria/  Textos y capturas para la memoria (E5)
 ```
 
-## Roles del panel de administración
+## Proyectos
 
-La migración `appBanco/migrations/0006_roles_movimientos.py` crea dos grupos:
+- **E4a** — Django. Instrucciones en [`E4a/README.md`](E4a/README.md).
+- **E4b** — Vue. Instrucciones en [`E4b/README.md`](E4b/README.md).
 
-| Grupo | Permisos sobre Movimiento |
-|---|---|
-| Consulta de movimientos | ver |
-| Edición de movimientos | ver, añadir, cambiar y borrar |
-
-Para probar los permisos con dos usuarios de prueba (`consulta` y `editor`, ambos con acceso al panel
-de administración) se ejecuta:
+## Generar el comprimido de entrega
 
 ```bash
-python manage.py usuarios_roles --password <contraseña>
+zip -r IW-<grupo>-E4.zip . -x '.git/*' -x '*/ing_web/*' -x '*/db.sqlite3'
 ```
-
-Los dos usuarios comparten la contraseña indicada en el comando.
