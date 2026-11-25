@@ -14,22 +14,25 @@
         <header id="header">
             <h1><a href="{% url 'principal' %}"><img src="{% static 'appBanco/img/logo.svg' %}" alt="Deusto Banco" height="40"></a></h1>
             <nav id="menubar">
+                <!-- seccion: nombre de la URL actual, para marcar el enlace activo -->
+                {% with seccion=request.resolver_match.url_name %}
                 <ul id="menu">
-                    <li><a href="{% url 'principal' %}">Inicio</a></li>
-                    <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
-                    <li><a href="{% url 'lista_cuentas' %}">Cuentas</a></li>
-                    <li><a href="{% url 'lista_tarjetas' %}">Tarjetas</a></li>
-                    <li><a href="{% url 'lista_movimientos' %}">Movimientos</a></li>
-                    <li><a href="{% url 'sobre' %}">El banco</a></li>
-                    <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                    <li><a href="{% url 'principal' %}"{% if seccion == 'principal' %} class="activo"{% endif %}>Inicio</a></li>
+                    <li><a href="{% url 'lista_clientes' %}"{% if 'cliente' in seccion %} class="activo"{% endif %}>Clientes</a></li>
+                    <li><a href="{% url 'lista_cuentas' %}"{% if 'cuenta' in seccion %} class="activo"{% endif %}>Cuentas</a></li>
+                    <li><a href="{% url 'lista_tarjetas' %}"{% if 'tarjeta' in seccion %} class="activo"{% endif %}>Tarjetas</a></li>
+                    <li><a href="{% url 'lista_movimientos' %}"{% if 'movimiento' in seccion %} class="activo"{% endif %}>Movimientos</a></li>
+                    <li><a href="{% url 'sobre' %}"{% if seccion == 'sobre' %} class="activo"{% endif %}>El banco</a></li>
+                    <li><a href="{% url 'contacto' %}"{% if seccion == 'contacto' %} class="activo"{% endif %}>Contacto</a></li>
                     {% if user.is_authenticated %}
-                    <li>{{ user.username }}
+                    <li class="usuario">{{ user.username }}
                         <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Cerrar sesión</button></form>
                     </li>
                     {% else %}
-                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'login' %}"{% if seccion == 'login' %} class="activo"{% endif %}>Iniciar sesión</a></li>
                     {% endif %}
                 </ul>
+                {% endwith %}
             </nav>
         </header>
 

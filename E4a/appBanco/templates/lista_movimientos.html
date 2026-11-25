@@ -46,8 +46,8 @@
                             <td><time datetime="{{ movimiento.fecha|date:'Y-m-d' }}">{{ movimiento.fecha|date:'d/m/Y' }}</time></td>
                             <td><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a></td>
                             <td>{{ movimiento.cuenta.iban }}</td>
-                            <td>{{ movimiento.get_tipo_display }}</td>
-                            <td class="importe-movimiento">{{ movimiento.importe|floatformat:2 }} €</td>
+                            <td><span class="etiqueta etiqueta-{{ movimiento.tipo }}">{{ movimiento.get_tipo_display }}</span></td>
+                            <td class="importe-movimiento importe-{{ movimiento.tipo }}">{{ movimiento.importe|floatformat:2 }} €</td>
                         </tr>
                     {% empty %}
                         <tr><td colspan="5">No se encontraron movimientos.</td></tr>

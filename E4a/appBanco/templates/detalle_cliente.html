@@ -5,18 +5,39 @@
 {% block content %}
 <h1>{{ cliente.nombre }} {{ cliente.apellidos }}</h1>
 
-<p>Email: {{ cliente.email }}</p>
-<p>Teléfono: {{ cliente.telefono }}</p>
+<table class="ficha">
+    <tr><th scope="row">Email</th><td>{{ cliente.email }}</td></tr>
+    <tr><th scope="row">Teléfono</th><td>{{ cliente.telefono|default:"-" }}</td></tr>
+    <tr><th scope="row">Cliente desde</th><td>{{ cliente.fecha_alta }}</td></tr>
+</table>
 
-<h2>Cuentas</h2>
-<p>Saldo total: {{ cliente.saldo_total|floatformat:2 }} €</p>
-<ul>
-    {% for cuenta in cliente.cuentas.all %}
-        <li><a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a> · {{ cuenta.saldo|floatformat:2 }} €</li>
-    {% empty %}
-        <p>No hay cuentas asociadas.</p>
-    {% endfor %}
-</ul>
+<section>
+    <h2>Cuentas</h2>
+    <p class="saldo-total">Saldo total: {{ cliente.saldo_total|floatformat:2 }} €</p>
 
-<p><a href="{% url 'lista_clientes' %}">Volver a la lista de clientes</a></p>
+    <div class="contenedor-tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">IBAN</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col" class="numero">Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cuenta in cliente.cuentas.all %}
+                    <tr>
+                        <td><a href="{% url 'detalle_cuenta' cuenta.pk %}">{{ cuenta.iban }}</a></td>
+                        <td><span class="etiqueta">{{ cuenta.get_tipo_display }}</span></td>
+                        <td class="numero">{{ cuenta.saldo|floatformat:2 }} €</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="3" class="vacio">No hay cuentas asociadas.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<p><a class="boton boton-volver" href="{% url 'lista_clientes' %}">Volver a la lista de clientes</a></p>
 {% endblock %}

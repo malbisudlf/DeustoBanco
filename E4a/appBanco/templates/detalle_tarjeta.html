@@ -5,11 +5,22 @@
 {% block content %}
 <h1>{{ tarjeta.numero }}</h1>
 
-<p>Cuenta: <a href="{% url 'detalle_cuenta' tarjeta.cuenta.pk %}">{{ tarjeta.cuenta.iban }}</a></p>
-<p>Tipo: {{ tarjeta.get_tipo_display }}</p>
-<p>Caducidad: {{ tarjeta.fecha_caducidad }}</p>
-<p>Estado: {% if tarjeta.activa %}Activa{% else %}Bloqueada{% endif %}</p>
-<p>Límite diario: {{ tarjeta.limite_diario }} €</p>
+<table class="ficha">
+    <tr><th scope="row">Cuenta</th><td><a href="{% url 'detalle_cuenta' tarjeta.cuenta.pk %}">{{ tarjeta.cuenta.iban }}</a></td></tr>
+    <tr><th scope="row">Tipo</th><td><span class="etiqueta">{{ tarjeta.get_tipo_display }}</span></td></tr>
+    <tr><th scope="row">Caducidad</th><td>{{ tarjeta.fecha_caducidad }}</td></tr>
+    <tr>
+        <th scope="row">Estado</th>
+        <td>
+            {% if tarjeta.activa %}
+                <span class="etiqueta etiqueta-activa">Activa</span>
+            {% else %}
+                <span class="etiqueta etiqueta-bloqueada">Bloqueada</span>
+            {% endif %}
+        </td>
+    </tr>
+    <tr><th scope="row">Límite diario</th><td>{{ tarjeta.limite_diario }} €</td></tr>
+</table>
 
-<p><a href="{% url 'lista_tarjetas' %}">Volver a la lista de tarjetas</a></p>
+<p><a class="boton boton-volver" href="{% url 'lista_tarjetas' %}">Volver a la lista de tarjetas</a></p>
 {% endblock %}

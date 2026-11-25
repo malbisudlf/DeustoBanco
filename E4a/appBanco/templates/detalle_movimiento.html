@@ -5,10 +5,12 @@
 {% block content %}
 <h1>{{ movimiento.concepto }}</h1>
 
-<p>Cuenta: <a href="{% url 'detalle_cuenta' movimiento.cuenta.pk %}">{{ movimiento.cuenta.iban }}</a></p>
-<p>Tipo: {{ movimiento.get_tipo_display }}</p>
-<p>Importe: {{ movimiento.importe }} €</p>
-<p>Fecha: {{ movimiento.fecha }}</p>
+<table class="ficha">
+    <tr><th scope="row">Cuenta</th><td><a href="{% url 'detalle_cuenta' movimiento.cuenta.pk %}">{{ movimiento.cuenta.iban }}</a></td></tr>
+    <tr><th scope="row">Tipo</th><td><span class="etiqueta etiqueta-{{ movimiento.tipo }}">{{ movimiento.get_tipo_display }}</span></td></tr>
+    <tr><th scope="row">Importe</th><td class="importe-{{ movimiento.tipo }}"><strong>{{ movimiento.importe }} €</strong></td></tr>
+    <tr><th scope="row">Fecha</th><td>{{ movimiento.fecha }}</td></tr>
+</table>
 
-<p><a href="{% url 'lista_movimientos' %}">Volver a la lista de movimientos</a></p>
+<p><a class="boton boton-volver" href="{% url 'lista_movimientos' %}">Volver a la lista de movimientos</a></p>
 {% endblock %}

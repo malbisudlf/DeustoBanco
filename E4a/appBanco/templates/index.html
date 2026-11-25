@@ -3,14 +3,31 @@
 {% block title %}Inicio{% endblock %}
 
 {% block content %}
-<h1>Deusto Banco</h1>
+<section class="portada">
+    <h1>Deusto Banco</h1>
+    <p>Gestión de clientes, cuentas, tarjetas y movimientos.</p>
+</section>
 
-<p>Selecciona una sección para ver los listados:</p>
-
-<ul>
-    <li><a href="{% url 'lista_clientes' %}">Clientes</a></li>
-    <li><a href="{% url 'lista_cuentas' %}">Cuentas</a></li>
-    <li><a href="{% url 'lista_tarjetas' %}">Tarjetas</a></li>
-    <li><a href="{% url 'lista_movimientos' %}">Movimientos</a></li>
-</ul>
+<section class="secciones">
+    <article>
+        <h2>Clientes</h2>
+        <p>Datos de contacto y saldo total de cada cliente.</p>
+        <a class="boton" href="{% url 'lista_clientes' %}">Ver clientes</a>
+    </article>
+    <article>
+        <h2>Cuentas</h2>
+        <p>Cuentas corrientes y de ahorro con su saldo.</p>
+        <a class="boton" href="{% url 'lista_cuentas' %}">Ver cuentas</a>
+    </article>
+    <article>
+        <h2>Tarjetas</h2>
+        <p>Tarjetas de débito y crédito, activas o bloqueadas.</p>
+        <a class="boton" href="{% url 'lista_tarjetas' %}">Ver tarjetas</a>
+    </article>
+    <article>
+        <h2>Movimientos</h2>
+        <p>Ingresos y gastos, con filtro por tipo y fechas.</p>
+        <a class="boton" href="{% url 'lista_movimientos' %}">Ver movimientos</a>
+    </article>
+</section>
 {% endblock %}

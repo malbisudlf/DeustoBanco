@@ -5,14 +5,34 @@
 {% block content %}
 <h1>Tarjetas</h1>
 
-<ul>
-    {% for tarjeta in tarjetas_listado %}
-        <li>
-            <a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a>
-            — {{ tarjeta.cuenta.iban }} ({{ tarjeta.get_tipo_display }})
-        </li>
-    {% empty %}
-        <li>No hay tarjetas registradas.</li>
-    {% endfor %}
-</ul>
+<div class="contenedor-tabla">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Cuenta</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarjeta in tarjetas_listado %}
+                <tr>
+                    <td><a href="{% url 'detalle_tarjeta' tarjeta.pk %}">{{ tarjeta.numero }}</a></td>
+                    <td>{{ tarjeta.cuenta.iban }}</td>
+                    <td><span class="etiqueta">{{ tarjeta.get_tipo_display }}</span></td>
+                    <td>
+                        {% if tarjeta.activa %}
+                            <span class="etiqueta etiqueta-activa">Activa</span>
+                        {% else %}
+                            <span class="etiqueta etiqueta-bloqueada">Bloqueada</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="4" class="vacio">No hay tarjetas registradas.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
