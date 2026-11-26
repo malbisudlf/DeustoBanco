@@ -52,6 +52,18 @@ class ListadoMovimientosTests(TestCase):
 
         self.assertQuerySetEqual(respuesta.context['movimientos_listado'], [self.gasto_posterior, self.gasto_final])
 
+    def test_ajax_devuelve_solo_el_fragmento_de_la_tabla(self):
+        respuesta = self.client.get(
+            reverse('lista_movimientos'), {'tipo': 'ingreso'}, headers={'X-Requested-With': 'XMLHttpRequest'},
+        )
+
+        self.assertTemplateUsed(respuesta, 'parciales/resultados_movimientos.html')
+        self.assertTemplateNotUsed(respuesta, 'base.html')
+        self.assertNotContains(respuesta, '<html')
+        self.assertContains(respuesta, 'data-movimiento', count=1)
+        self.assertContains(respuesta, 'Nómina')
+        self.assertIn('X-Requested-With', respuesta['Vary'])
+
     def test_muestra_un_error_para_filtros_invalidos(self):
         casos = [
             ({'desde': '2026-11-30', 'hasta': '2026-11-01'}, 'posterior'),

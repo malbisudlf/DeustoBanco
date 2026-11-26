@@ -56,14 +56,9 @@
         peticion = actual;
 
         actual
-            .done((html) => {
-                const $nuevos = $("<div>").append($.parseHTML(html)).find("#resultados-movimientos");
-                if (!$nuevos.length) {
-                    $estado.text("No se pudo actualizar el listado. Pulsa «Aplicar filtros» para reintentar.");
-                    return;
-                }
-
-                $resultados.html($nuevos.html()).addClass("actualizado");
+            .done((fragmento) => {
+                // La vista responde solo con el fragmento de la tabla (o la lista de errores).
+                $resultados.html(fragmento).addClass("actualizado");
                 marcarErroresAccesibles();
                 mostrarResumen(
                     $resultados.find(".errores-filtro-movimientos").length > 0,
