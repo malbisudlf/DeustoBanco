@@ -6,7 +6,7 @@
 <h1>{{ movimiento.concepto }}</h1>
 
 <table class="ficha">
-    <tr><th scope="row">Cuenta</th><td><a href="{% url 'detalle_cuenta' movimiento.cuenta.pk %}">{{ movimiento.cuenta.iban }}</a></td></tr>
+    <tr><th scope="row">Cuenta</th><td>{% if perms.appBanco.view_cuenta %}<a href="{% url 'detalle_cuenta' movimiento.cuenta.pk %}">{{ movimiento.cuenta.iban }}</a>{% else %}{{ movimiento.cuenta.iban }}{% endif %}</td></tr>
     <tr><th scope="row">Tipo</th><td><span class="etiqueta etiqueta-{{ movimiento.tipo }}">{{ movimiento.get_tipo_display }}</span></td></tr>
     <tr><th scope="row">Importe</th><td class="importe-{{ movimiento.tipo }}"><strong>{{ movimiento.importe }} €</strong></td></tr>
     <tr><th scope="row">Fecha</th><td>{{ movimiento.fecha }}</td></tr>

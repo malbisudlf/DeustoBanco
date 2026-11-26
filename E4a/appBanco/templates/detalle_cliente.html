@@ -11,6 +11,7 @@
     <tr><th scope="row">Cliente desde</th><td>{{ cliente.fecha_alta }}</td></tr>
 </table>
 
+{% if perms.appBanco.view_cuenta %}
 <section>
     <h2>Cuentas</h2>
     <p class="saldo-total">Saldo total: {{ cliente.saldo_total|floatformat:2 }} €</p>
@@ -38,6 +39,7 @@
         </table>
     </div>
 </section>
+{% endif %}
 
 <p><a class="boton boton-volver" href="{% url 'lista_clientes' %}">Volver a la lista de clientes</a></p>
 {% endblock %}

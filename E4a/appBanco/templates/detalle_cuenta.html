@@ -10,12 +10,13 @@
 {% endfor %}
 
 <table class="ficha">
-    <tr><th scope="row">Cliente</th><td><a href="{% url 'detalle_cliente' cuenta.cliente.pk %}">{{ cuenta.cliente }}</a></td></tr>
+    <tr><th scope="row">Cliente</th><td>{% if perms.appBanco.view_cliente %}<a href="{% url 'detalle_cliente' cuenta.cliente.pk %}">{{ cuenta.cliente }}</a>{% else %}{{ cuenta.cliente }}{% endif %}</td></tr>
     <tr><th scope="row">Tipo</th><td><span class="etiqueta">{{ cuenta.get_tipo_display }}</span></td></tr>
     <tr><th scope="row">Saldo</th><td><strong>{{ cuenta.saldo }} €</strong></td></tr>
     <tr><th scope="row">Fecha de apertura</th><td>{{ cuenta.fecha_apertura }}</td></tr>
 </table>
 
+{% if perms.appBanco.view_tarjeta %}
 <section>
     <h2>Tarjetas</h2>
     <ul>
@@ -29,7 +30,9 @@
         {% endfor %}
     </ul>
 </section>
+{% endif %}
 
+{% if perms.appBanco.view_movimiento %}
 <section>
     <h2>Movimientos</h2>
     <div class="contenedor-tabla">
@@ -57,7 +60,9 @@
         </table>
     </div>
 </section>
+{% endif %}
 
+{% if perms.appBanco.add_movimiento %}
 <section>
     <h2>Nuevo movimiento</h2>
     <form method="post" class="formulario">
@@ -72,6 +77,7 @@
       <button type="submit">Añadir movimiento</button>
     </form>
 </section>
+{% endif %}
 
 <p><a class="boton boton-volver" href="{% url 'lista_cuentas' %}">Volver a la lista de cuentas</a></p>
 {% endblock %}

@@ -56,14 +56,15 @@ h2 {
 }
 
 #header h1 {
-    margin: 0 0 0.5em;
+    margin: 0 0 0.7em;
     font-size: 1.6em;
 }
 
 /* el logo es azul oscuro: necesita fondo blanco para verse sobre la cabecera */
 #header h1 img {
     background-color: #fff;
-    padding: 2px 8px;
+    border-radius: 0.4rem;
+    padding: 4px 8px;
     vertical-align: middle;
 }
 
@@ -76,37 +77,88 @@ h2 {
     color: #f0a500;
 }
 
+#menubar {
+    overflow-x: auto;
+    padding: 0.25rem;
+    margin: -0.25rem;
+}
+
 #menu {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    width: max-content;
+    min-width: 100%;
+    white-space: nowrap;
 }
 
-#menu li {
-    display: inline-block;
+#menu li:last-child {
+    margin-left: auto;
 }
 
 #menu a {
     display: block;
-    padding: 0.4em 0.6em;
+    position: relative;
+    padding: 0.65rem 0.7rem;
+    border-radius: 0.4rem;
 }
 
 #menu a:hover,
-#menu a:focus {
-    background-color: rgba(255, 255, 255, 0.15);
+#menu a:focus-visible,
+#menu a.activo {
+    background-color: rgba(255, 255, 255, 0.12);
 }
 
-/* sección en la que se encuentra el usuario */
-#menu a.activo {
+/* La sección activa se marca mientras el ratón no está sobre otro enlace. */
+#menu a.activo::before,
+#menu a::after {
+    content: "";
+    position: absolute;
+    left: 0.7rem;
+    right: 0.7rem;
+    bottom: 0.3rem;
+    height: 3px;
+    border-radius: 3px;
     background-color: #f0a500;
-    color: #1f3a5f;
-    font-weight: bold;
+    pointer-events: none;
+}
+
+#menu a.activo::before {
+    width: 1rem;
+    right: auto;
+}
+
+#menu a::after {
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@media (any-hover: hover) {
+    #menu:has(a:hover) a.activo:not(:hover) {
+        background-color: transparent;
+    }
+
+    #menu:has(a:hover) a.activo::before {
+        content: none;
+    }
+
+    #menu a:hover::after {
+        transform: scaleX(1);
+        transition: transform 0.65s ease-in-out;
+    }
+}
+
+#header a:focus-visible,
+#menu button:focus-visible {
+    outline: 2px solid #f0a500;
+    outline-offset: 2px;
 }
 
 #menu .usuario {
-    padding: 0.4em 0.6em;
+    padding: 0.65rem 0.7rem;
 }
 
 /* botón del menú de cerrar sesión: aspecto de enlace */
@@ -205,6 +257,10 @@ button:focus,
 .secciones h2 {
     margin-top: 0;
     border-bottom: none;
+}
+
+.accesos-publicos {
+    margin-top: 1.5rem;
 }
 
 /* TABLAS (listados y fichas de datos) */
@@ -324,6 +380,10 @@ legend {
     margin: 0 0 1em;
 }
 
+.formulario fieldset > div + div {
+    margin-top: 1rem;
+}
+
 .formulario label {
     display: block;
     font-weight: bold;
@@ -336,6 +396,48 @@ legend {
     padding: 0.5em;
     font-size: 1em;
     border: 1px solid #b8c2cc;
+}
+
+.campo-contrasena {
+    position: relative;
+    display: block;
+}
+
+.formulario .campo-contrasena input {
+    min-height: 2.75rem;
+    padding-right: 3rem;
+}
+
+.campo-contrasena input::-ms-reveal {
+    display: none;
+}
+
+.campo-contrasena .boton-contrasena {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    padding: 0;
+    border: 0;
+    color: #1f3a5f;
+    background-color: transparent;
+}
+
+.campo-contrasena .boton-contrasena:hover,
+.campo-contrasena .boton-contrasena:focus-visible {
+    background-color: #edf3f9;
+}
+
+.boton-contrasena .ojo-tachado,
+.boton-contrasena[aria-pressed="true"] .ojo-abierto {
+    display: none;
+}
+
+.boton-contrasena[aria-pressed="true"] .ojo-tachado {
+    display: block;
 }
 
 .formulario input:focus,
@@ -408,22 +510,180 @@ legend {
 }
 
 /* PÁGINAS ESTÁTICAS */
-.presentacion img {
+.pagina-institucional > section + section {
+    margin-top: 2.5rem;
+}
+
+.pagina-institucional h2 {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    border-bottom: none;
+    font-size: 1.5rem;
+}
+
+.pagina-institucional h3 {
+    margin: 0 0 0.4rem;
+    color: #1f3a5f;
+    font-size: 1.1rem;
+}
+
+.cabecera-institucional {
+    padding: 1.5rem;
+    background-color: #edf3f9;
+    border: 1px solid #dce5ef;
+    border-radius: 0.75rem;
+}
+
+.cabecera-institucional h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    line-height: 1.15;
+}
+
+.cabecera-institucional p:last-child,
+.bloque-contacto p,
+.historia-banco p {
+    margin: 0;
+}
+
+.cabecera-con-imagen img {
     display: block;
-    margin-bottom: 1em;
+    width: 100%;
+    height: auto;
+    margin-top: 1.25rem;
+    border-radius: 0.5rem;
+}
+
+.cifras-banco {
+    display: grid;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-color: #527095;
+    list-style: none;
+}
+
+.cifras-banco li {
+    padding: 1.25rem;
+    background-color: #1f3a5f;
+    color: #fff;
+    text-align: center;
+}
+
+.cifras-banco strong {
+    display: block;
+    color: #ffd065;
+    font-size: 2.5rem;
+    line-height: 1.1;
+}
+
+.historia-banco {
+    margin: 0 0 0 0.4rem;
+    padding: 0;
+    border-left: 2px solid #dce5ef;
+    list-style: none;
+}
+
+.historia-banco li {
+    display: grid;
+    grid-template-columns: 3.25rem 1fr;
+    gap: 0.6rem;
+    position: relative;
+    padding: 0.5rem 0 1.2rem 1.25rem;
+}
+
+.historia-banco li::before {
+    content: "";
+    position: absolute;
+    left: -0.4rem;
+    top: 0.9rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background-color: #f0a500;
+}
+
+.historia-banco time {
+    color: #1f3a5f;
+    font-weight: bold;
+}
+
+.bloque-contacto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 4px solid #f0a500;
+    border-radius: 0.4rem;
+    background-color: #fff6e0;
+}
+
+.bloque-contacto h2 {
+    margin-bottom: 0.25rem;
+}
+
+.nota-institucional {
+    color: #526172;
+    font-size: 0.9rem;
+}
+
+.canales-contacto {
+    display: grid;
+    gap: 1rem;
+}
+
+.canales-contacto article {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+    border: 1px solid #dce5ef;
+    border-radius: 0.65rem;
+}
+
+.canales-contacto p {
+    margin: 0 0 0.8rem;
+}
+
+.canales-contacto .correo-contacto {
+    margin: auto 0 0;
+    color: #1f3a5f;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.preguntas-contacto details {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid #dce5ef;
+}
+
+.preguntas-contacto summary {
+    color: #1f3a5f;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.preguntas-contacto details p {
+    margin-bottom: 0;
+}
+
+@media (min-width: 560px) {
+    .cifras-banco {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .canales-contacto {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* PANTALLAS GRANDES (tablet y escritorio) */
 @media only screen and (min-width: 768px) {
     #header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         padding: 1em 2em;
-    }
-
-    #header h1 {
-        margin: 0;
     }
 
     #content {
@@ -438,8 +698,22 @@ legend {
         max-width: 480px;
     }
 
-    .presentacion {
-        display: flex;
-        gap: 1.5em;
+    .cabecera-institucional {
+        padding: 2rem;
+    }
+
+    .cabecera-institucional h1 {
+        font-size: 2.5rem;
+    }
+
+    .cabecera-con-imagen {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .cabecera-con-imagen img {
+        margin-top: 0;
     }
 }

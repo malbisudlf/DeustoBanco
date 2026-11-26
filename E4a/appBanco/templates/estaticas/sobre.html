@@ -4,17 +4,74 @@
 {% block title %}Quiénes somos{% endblock %}
 
 {% block content %}
-<h1>Quiénes somos</h1>
-
-<article class="presentacion">
-    <img src="{% static 'appBanco/img/banco.svg' %}" alt="Fachada de Deusto Banco" width="320" height="200">
-
-    <section>
-        <p>Deusto Banco es la entidad bancaria del proyecto de Ingeniería Web. Ofrece cuentas
-        corrientes y de ahorro, tarjetas de débito y crédito, y el seguimiento de los movimientos
-        de cada cuenta.</p>
-
-        <p><a class="boton" href="{% url 'contacto' %}">Contacto</a></p>
+<div class="pagina-institucional">
+    <section class="cabecera-institucional cabecera-con-imagen" aria-labelledby="quienes-somos">
+        <div>
+            <h1 id="quienes-somos">Quiénes somos</h1>
+            <p>Deusto Banco nació en Bilbao en 2004 para acercar los servicios bancarios
+                a particulares, familias y comercios locales.</p>
+            <p>Hoy combinamos la atención en sucursal con una banca digital desde la que
+                puedes consultar tus cuentas, tarjetas y movimientos.</p>
+        </div>
+        <img src="{% static 'appBanco/img/banco.svg' %}" alt="Ilustración de una sucursal de Deusto Banco"
+            width="320" height="200">
     </section>
-</article>
+
+    <section aria-labelledby="cifras-banco">
+        <h2 id="cifras-banco">El banco en cifras</h2>
+        <ul class="cifras-banco">
+            <li><strong>+40</strong> sucursales</li>
+            <li><strong>4</strong> países</li>
+            <li><strong>+300</strong> empleados</li>
+        </ul>
+        <p>Nuestra red de oficinas está presente en España, Portugal, Francia e Italia.</p>
+    </section>
+
+    <section aria-labelledby="historia-banco">
+        <h2 id="historia-banco">Nuestra historia</h2>
+        <ol class="historia-banco">
+            <li>
+                <time datetime="2004">2004</time>
+                <div>
+                    <h3>Primera oficina en Bilbao</h3>
+                    <p>Un pequeño equipo abrió la primera sucursal en el barrio de Deusto. La oficina
+                        ofrecía cuentas corrientes y de ahorro a vecinos y pequeños comercios.</p>
+                </div>
+            </li>
+            <li>
+                <time datetime="2012">2012</time>
+                <div>
+                    <h3>Las primeras sucursales en Portugal</h3>
+                    <p>Tras crecer en el norte de España, abrimos oficinas en Oporto y Lisboa para
+                        atender a clientes a ambos lados de la frontera.</p>
+                </div>
+            </li>
+            <li>
+                <time datetime="2019">2019</time>
+                <div>
+                    <h3>Lanzamiento de la banca digital</h3>
+                    <p>Los clientes pudieron empezar a consultar el saldo, las tarjetas y el
+                        historial de movimientos desde la web.</p>
+                </div>
+            </li>
+            <li>
+                <time datetime="2026">2026</time>
+                <div>
+                    <h3>Una red de cuatro países</h3>
+                    <p>Con la incorporación de oficinas en Francia e Italia, superamos las 40
+                        sucursales y los 300 empleados.</p>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <section class="bloque-contacto" aria-labelledby="atencion-banco">
+        <div>
+            <h2 id="atencion-banco">Atención al cliente</h2>
+            <p>Consulta los canales de atención, el horario y las preguntas frecuentes.</p>
+        </div>
+        <a class="boton" href="{% url 'contacto' %}">Ir a Contacto</a>
+    </section>
+    <p class="nota-institucional">Deusto Banco y su historia son ficticios y forman parte del proyecto de Ingeniería Web.</p>
+</div>
 {% endblock %}

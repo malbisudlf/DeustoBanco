@@ -117,8 +117,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Después de iniciar/cerrar sesión, volver a la página principal
-LOGIN_REDIRECT_URL = '/'
+# Dirección de inicio de sesión para las vistas protegidas.
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = '/'
 
 

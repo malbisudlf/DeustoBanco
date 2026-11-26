@@ -7,10 +7,15 @@
 
 <form method="post" class="formulario">
   {% csrf_token %}
+  {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
   <fieldset>
     <legend>Datos de acceso</legend>
     {{ form.as_p }}
   </fieldset>
   <button type="submit">Entrar</button>
 </form>
+{% include 'registro/control_contrasena.html' %}
+{% if not user.is_authenticated %}
+    <p>¿Todavía no tienes cuenta? <a href="{% url 'alta_cliente' %}">Hazte cliente</a>.</p>
+{% endif %}
 {% endblock %}

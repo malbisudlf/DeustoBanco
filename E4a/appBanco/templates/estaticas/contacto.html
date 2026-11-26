@@ -3,11 +3,51 @@
 {% block title %}Contacto{% endblock %}
 
 {% block content %}
-<h1>Contacto</h1>
+<div class="pagina-institucional">
+    <section class="cabecera-institucional" aria-labelledby="contacto-banco">
+        <h1 id="contacto-banco">Contacto</h1>
+        <p>Encuentra el canal adecuado para tus consultas sobre cuentas, tarjetas o el acceso a la banca digital.</p>
+    </section>
 
-<table class="ficha">
-    <tr><th scope="row">Dirección</th><td>Calle del Maestro Mendizabal s/n, 48001 Bilbao</td></tr>
-    <tr><th scope="row">Correo</th><td><a href="mailto:info@deustobanco.example">info@deustobanco.example</a></td></tr>
-    <tr><th scope="row">Teléfono</th><td>94 812 0000</td></tr>
-</table>
+    <section aria-labelledby="canales-contacto">
+        <h2 id="canales-contacto">Canales de atención</h2>
+        <p class="nota-institucional">Las direcciones y los horarios son de ejemplo para el proyecto.</p>
+        <div class="canales-contacto">
+            <article>
+                <h3>Atención general</h3>
+                <p>Información sobre cuentas, tarjetas y gestiones en oficina.</p>
+                <p class="correo-contacto">info@deustobanco.example</p>
+            </article>
+            <article>
+                <h3>Soporte digital</h3>
+                <p>Ayuda para iniciar sesión o consultar tus movimientos en la web.</p>
+                <p class="correo-contacto">soporte@deustobanco.example</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="bloque-contacto" aria-labelledby="horario-oficina">
+        <div>
+            <h2 id="horario-oficina">Oficina principal</h2>
+            <p>Barrio de Deusto, Bilbao.</p>
+        </div>
+        <p><strong>Lunes a viernes</strong><br>De 9:00 a 14:00</p>
+    </section>
+
+    <section class="preguntas-contacto" aria-labelledby="preguntas-contacto">
+        <h2 id="preguntas-contacto">Preguntas frecuentes</h2>
+        <details>
+            <summary>¿Dónde puedo consultar mi saldo?</summary>
+            <p>Inicia sesión y abre <a href="{% url 'mi_cuenta' %}">Mi cuenta</a>. Ahí verás el saldo de cada una de tus cuentas.</p>
+        </details>
+        <details>
+            <summary>¿Cómo busco un ingreso o un gasto?</summary>
+            <p>En <a href="{% url 'mi_cuenta' %}">Mi cuenta</a> encontrarás tus diez movimientos más recientes.</p>
+        </details>
+        <details>
+            <summary>¿Dónde veo el estado de una tarjeta?</summary>
+            <p>Abre <a href="{% url 'mi_cuenta' %}">Mi cuenta</a> y revisa la sección de tarjetas.</p>
+        </details>
+    </section>
+</div>
 {% endblock %}

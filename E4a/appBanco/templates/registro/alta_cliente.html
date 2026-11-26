@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Hazte cliente{% endblock %}
+
+{% block content %}
+<h1>Hazte cliente</h1>
+<p>Abre una cuenta corriente o de ahorro de demostración. Usa datos ficticios para el alta.</p>
+
+<form method="post" class="formulario">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <fieldset>
+        <legend>Datos del cliente</legend>
+        <div>{{ form.first_name.as_field_group }}</div>
+        <div>{{ form.last_name.as_field_group }}</div>
+        <div>{{ form.email.as_field_group }}</div>
+        <div>{{ form.telefono.as_field_group }}</div>
+        <div>{{ form.tipo_cuenta.as_field_group }}</div>
+    </fieldset>
+    <fieldset>
+        <legend>Datos de acceso</legend>
+        <div>{{ form.username.as_field_group }}</div>
+        <div>{{ form.password1.as_field_group }}</div>
+        <div>{{ form.password2.as_field_group }}</div>
+    </fieldset>
+    <button type="submit">Crear cuenta</button>
+</form>
+{% include 'registro/control_contrasena.html' %}
+
+<p>¿Ya eres cliente? <a href="{% url 'login' %}">Inicia sesión</a>.</p>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Mi cuenta{% endblock %}
+
+{% block content %}
+<h1>Mi cuenta</h1>
+{% for mensaje in messages %}
+    <p class="mensaje" role="status">{{ mensaje }}</p>
+{% endfor %}
+
+{% if cuentas %}
+    <h2>Mis cuentas</h2>
+    <div class="contenedor-tabla">
+        <table>
+            <thead>
+                <tr><th scope="col">Identificador</th><th scope="col">Tipo</th><th scope="col" class="numero">Saldo actual</th></tr>
+            </thead>
+            <tbody>
+                {% for cuenta in cuentas %}
+                    <tr>
+                        <td>{{ cuenta.iban }}</td>
+                        <td>{{ cuenta.get_tipo_display }}</td>
+                        <td class="numero">{{ cuenta.saldo|floatformat:2 }} €</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Mis tarjetas</h2>
+    <ul>
+        {% for tarjeta in tarjetas %}
+            <li>{{ tarjeta.get_tipo_display }} · termina en {{ tarjeta.numero|slice:'-4:' }} · {% if tarjeta.activa %}Activa{% else %}Bloqueada{% endif %}</li>
+        {% empty %}
+            <li class="vacio">Todavía no tienes tarjetas asociadas.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Movimientos recientes</h2>
+    <div class="contenedor-tabla">
+        <table>
+            <thead>
+                <tr><th scope="col">Fecha</th><th scope="col">Concepto</th><th scope="col">Tipo</th><th scope="col" class="numero">Importe</th></tr>
+            </thead>
+            <tbody>
+                {% for movimiento in movimientos %}
+                    <tr>
+                        <td>{{ movimiento.fecha|date:'d/m/Y' }}</td>
+                        <td>{{ movimiento.concepto }}</td>
+                        <td>{{ movimiento.get_tipo_display }}</td>
+                        <td class="numero importe-{{ movimiento.tipo }}">{{ movimiento.importe|floatformat:2 }} €</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="4" class="vacio">Todavía no hay movimientos.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>Este usuario todavía no tiene una cuenta bancaria asociada.</p>
+{% endif %}
+{% endblock %}

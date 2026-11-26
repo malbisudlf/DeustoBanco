@@ -13,23 +13,35 @@
         <!-- CABECERA -->
         <header id="header">
             <h1><a href="{% url 'principal' %}"><img src="{% static 'appBanco/img/logo.svg' %}" alt="Deusto Banco" height="40"></a></h1>
-            <nav id="menubar">
+            <nav id="menubar" aria-label="Navegación principal">
                 <!-- seccion: nombre de la URL actual, para marcar el enlace activo -->
                 {% with seccion=request.resolver_match.url_name %}
                 <ul id="menu">
-                    <li><a href="{% url 'principal' %}"{% if seccion == 'principal' %} class="activo"{% endif %}>Inicio</a></li>
-                    <li><a href="{% url 'lista_clientes' %}"{% if 'cliente' in seccion %} class="activo"{% endif %}>Clientes</a></li>
-                    <li><a href="{% url 'lista_cuentas' %}"{% if 'cuenta' in seccion %} class="activo"{% endif %}>Cuentas</a></li>
-                    <li><a href="{% url 'lista_tarjetas' %}"{% if 'tarjeta' in seccion %} class="activo"{% endif %}>Tarjetas</a></li>
-                    <li><a href="{% url 'lista_movimientos' %}"{% if 'movimiento' in seccion %} class="activo"{% endif %}>Movimientos</a></li>
-                    <li><a href="{% url 'sobre' %}"{% if seccion == 'sobre' %} class="activo"{% endif %}>El banco</a></li>
-                    <li><a href="{% url 'contacto' %}"{% if seccion == 'contacto' %} class="activo"{% endif %}>Contacto</a></li>
+                    <li><a href="{% url 'principal' %}"{% if seccion == 'principal' or seccion == 'index' %} class="activo" aria-current="location"{% endif %}>Inicio</a></li>
+                    {% if user.is_staff and perms.appBanco.view_cliente %}
+                    <li><a href="{% url 'lista_clientes' %}"{% if 'cliente' in seccion %} class="activo" aria-current="location"{% endif %}>Clientes</a></li>
+                    {% endif %}
+                    {% if user.is_staff and perms.appBanco.view_cuenta %}
+                    <li><a href="{% url 'lista_cuentas' %}"{% if seccion == 'lista_cuentas' or seccion == 'detalle_cuenta' %} class="activo" aria-current="location"{% endif %}>Cuentas</a></li>
+                    {% endif %}
+                    {% if user.is_staff and perms.appBanco.view_tarjeta %}
+                    <li><a href="{% url 'lista_tarjetas' %}"{% if 'tarjeta' in seccion %} class="activo" aria-current="location"{% endif %}>Tarjetas</a></li>
+                    {% endif %}
+                    {% if user.is_staff and perms.appBanco.view_movimiento %}
+                    <li><a href="{% url 'lista_movimientos' %}"{% if 'movimiento' in seccion %} class="activo" aria-current="location"{% endif %}>Movimientos</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'sobre' %}"{% if seccion == 'sobre' %} class="activo" aria-current="location"{% endif %}>El banco</a></li>
+                    <li><a href="{% url 'contacto' %}"{% if seccion == 'contacto' %} class="activo" aria-current="location"{% endif %}>Contacto</a></li>
                     {% if user.is_authenticated %}
+                    {% if not user.is_staff %}
+                    <li><a href="{% url 'mi_cuenta' %}"{% if seccion == 'mi_cuenta' %} class="activo" aria-current="location"{% endif %}>Mi cuenta</a></li>
+                    {% endif %}
                     <li class="usuario">{{ user.username }}
                         <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button type="submit">Cerrar sesión</button></form>
                     </li>
                     {% else %}
-                    <li><a href="{% url 'login' %}"{% if seccion == 'login' %} class="activo"{% endif %}>Iniciar sesión</a></li>
+                    <li><a href="{% url 'alta_cliente' %}"{% if seccion == 'alta_cliente' %} class="activo" aria-current="location"{% endif %}>Hazte cliente</a></li>
+                    <li><a href="{% url 'login' %}"{% if seccion == 'login' %} class="activo" aria-current="location"{% endif %}>Iniciar sesión</a></li>
                     {% endif %}
                 </ul>
                 {% endwith %}

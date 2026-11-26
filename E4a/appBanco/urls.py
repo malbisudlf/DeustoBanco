@@ -14,6 +14,8 @@ urlpatterns = [
     path('movimientos/<int:pk>/', views.detalle_movimiento, name='detalle_movimiento'),
     path('sobre/', views.pagina_sobre, name='sobre'),
     path('contacto/', views.pagina_contacto, name='contacto'),
+    path('alta/', views.alta_cliente, name='alta_cliente'),
+    path('mi-cuenta/', views.mi_cuenta, name='mi_cuenta'),
     path('accounts/login/', views.login, name='login'),
     path('accounts/logout/', views.logout, name='logout'),
 ]
