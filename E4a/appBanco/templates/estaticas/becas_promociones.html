@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Becas y promociones{% endblock %}
 
@@ -25,6 +26,8 @@
         </header>
         <div class="programas-banco">
             <article>
+                <img class="foto-programa" src="{% static 'appBanco/img/fotos/beca-material.jpg' %}"
+                    alt="Dos estudiantes trabajan con libros y apuntes en una biblioteca" width="1000" height="666" loading="lazy">
                 <h3>Beca Material de Estudio</h3>
                 <p class="ventaja-programa">Hasta 300 €</p>
                 <p>Ayuda para comprar libros, material de clase o equipamiento informático.</p>
@@ -35,6 +38,8 @@
                 </details>
             </article>
             <article>
+                <img class="foto-programa" src="{% static 'appBanco/img/fotos/beca-movilidad.jpg' %}"
+                    alt="Un joven con mochila espera el tren en el andén de una estación" width="1000" height="652" loading="lazy">
                 <h3>Beca Movilidad</h3>
                 <p class="ventaja-programa">Hasta 500 €</p>
                 <p>Ayuda para cubrir el transporte y parte del alojamiento durante un intercambio académico.</p>
@@ -59,6 +64,8 @@
         </header>
         <div class="programas-banco">
             <article>
+                <img class="foto-programa" src="{% static 'appBanco/img/fotos/promo-libros.jpg' %}"
+                    alt="Libros expuestos en las mesas y estanterías de una librería" width="1000" height="750" loading="lazy">
                 <h3>Vuelta a clase</h3>
                 <p class="ventaja-programa">10 % de descuento</p>
                 <p>En libros y material escolar en librerías colaboradoras.</p>
@@ -69,6 +76,8 @@
                 </details>
             </article>
             <article>
+                <img class="foto-programa" src="{% static 'appBanco/img/fotos/promo-cultura.jpg' %}"
+                    alt="Visitantes recorren una sala de exposiciones" width="1000" height="668" loading="lazy">
                 <h3>Cultura en compañía</h3>
                 <p class="ventaja-programa">2 entradas al precio de 1</p>
                 <p>Para exposiciones y visitas guiadas en centros culturales colaboradores.</p>

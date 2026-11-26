@@ -41,7 +41,7 @@ h2 {
 }
 
 #main {
-    max-width: 960px;
+    max-width: 1140px;
     margin: 0 auto;
     background-color: #fff;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
@@ -936,5 +936,564 @@ legend {
 
     .cabecera-con-imagen img {
         margin-top: 0;
+    }
+}
+
+/* ============================================================
+   FOTOGRAFÍAS E ICONOS (mobile first)
+   ============================================================ */
+
+/* iconos en línea (plantilla iconos/icono.html) */
+.icono {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 1.25em;
+    height: 1.25em;
+    vertical-align: -0.2em;
+}
+
+.antetitulo {
+    margin: 0 0 0.35rem;
+    color: #f0a500;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* círculo de color con un icono dentro */
+.icono-seccion,
+.icono-ventaja,
+.icono-canal {
+    display: inline-grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: #edf3f9;
+    color: #1f3a5f;
+}
+
+.icono-seccion .icono,
+.icono-ventaja .icono,
+.icono-canal .icono {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.titulo-icono {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    overflow-wrap: anywhere;
+}
+
+.titulo-icono .icono {
+    width: 1.1em;
+    height: 1.1em;
+    color: #f0a500;
+}
+
+.dato-icono {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.dato-icono .icono {
+    margin-top: 0.15em;
+    color: #1f3a5f;
+}
+
+.enlace-flecha {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-weight: bold;
+}
+
+.enlace-flecha .icono {
+    width: 1.1em;
+    height: 1.1em;
+}
+
+@media (any-hover: hover) {
+    .enlace-flecha .icono {
+        transition: transform 0.2s ease-out;
+    }
+
+    .enlace-flecha:hover .icono {
+        transform: translateX(3px);
+    }
+}
+
+/* botones sobre fondos oscuros */
+.boton-destacado {
+    background-color: #f0a500;
+    border-color: #f0a500;
+    color: #1f3a5f;
+    font-weight: bold;
+}
+
+.boton-destacado:hover,
+.boton-destacado:focus {
+    background-color: #ffd065;
+    border-color: #ffd065;
+}
+
+.boton-claro {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+.boton-claro:hover,
+.boton-claro:focus {
+    background-color: #fff;
+    border-color: #fff;
+    color: #1f3a5f;
+}
+
+/* PORTADA CON FOTO (inicio) */
+.portada-foto {
+    position: relative;
+    display: grid;
+    align-items: end;
+    min-height: 24rem;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    color: #fff;
+}
+
+.portada-foto img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* degradado oscuro para que el texto se lea sobre la foto */
+.portada-foto::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(16, 33, 56, 0.92) 0%, rgba(16, 33, 56, 0.55) 55%, rgba(16, 33, 56, 0.1) 100%);
+}
+
+.portada-foto-texto {
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
+}
+
+.portada-foto h1 {
+    margin-bottom: 0.4rem;
+    color: #fff;
+    font-size: 2.25rem;
+    line-height: 1.1;
+}
+
+.portada-foto-texto > p:not(.antetitulo) {
+    max-width: 32rem;
+    margin: 0 0 1.25rem;
+    font-size: 1.1rem;
+}
+
+.acciones-portada {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+/* ventajas con icono */
+.ventajas {
+    display: grid;
+    gap: 1rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ventajas li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+    border: 1px solid #dce5ef;
+    border-radius: 0.65rem;
+}
+
+.ventajas strong {
+    color: #1f3a5f;
+}
+
+.ventajas p {
+    margin: 0.2rem 0 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* bloque de foto + texto */
+.bloque-foto {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    background-color: #edf3f9;
+}
+
+.bloque-foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.bloque-foto h2 {
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    font-size: 1.5rem;
+}
+
+/* accesos de la página de inicio con miniatura */
+.accesos-publicos article {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.65rem;
+}
+
+.accesos-publicos article img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.accesos-publicos article > div {
+    padding: 1rem 1.1rem 1.25rem;
+}
+
+.secciones-panel .icono-seccion {
+    margin-bottom: 0.5rem;
+}
+
+/* cifras de "Quiénes somos" */
+.cifras-banco .icono {
+    display: block;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin: 0 auto 0.5rem;
+    color: #ffd065;
+}
+
+/* fotos de becas y promociones */
+.programas-banco article {
+    overflow: hidden;
+}
+
+.foto-programa {
+    display: block;
+    width: calc(100% + 2.5rem);
+    max-width: none;
+    height: auto;
+    margin: -1.25rem -1.25rem 1rem;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.cabecera-con-imagen img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* contacto */
+.icono-canal {
+    margin-bottom: 0.75rem;
+}
+
+.bloque-contacto .dato-icono {
+    margin-top: 0.25rem;
+}
+
+/* créditos de las fotos */
+.creditos-fotos {
+    padding-left: 1.2rem;
+}
+
+.creditos-fotos li {
+    margin-bottom: 0.4rem;
+}
+
+/* INICIO DE SESIÓN Y ALTA: formulario + foto */
+.acceso-intro {
+    margin-top: -0.5rem;
+    color: #555;
+}
+
+/* en móvil se prioriza el formulario: la foto solo aparece en pantallas grandes */
+.acceso-foto {
+    display: none;
+}
+
+.acceso-foto img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+.acceso-foto > p,
+.lista-iconos {
+    margin: 1rem 0 0;
+    color: #1f3a5f;
+}
+
+.lista-iconos {
+    padding: 0;
+    list-style: none;
+}
+
+.lista-iconos li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dce5ef;
+}
+
+.lista-iconos .icono {
+    color: #f0a500;
+}
+
+/* MI CUENTA */
+.saludo-cuenta {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #1f3a5f 0%, #2d5486 100%);
+    color: #fff;
+}
+
+.saludo-cuenta h1 {
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+.saludo-cuenta p:last-child {
+    margin: 0;
+    color: #dce5ef;
+}
+
+.cuentas-cliente {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.cuentas-cliente li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1.1rem;
+    border: 1px solid #dce5ef;
+    border-left: 4px solid #1f3a5f;
+    border-radius: 0.65rem;
+}
+
+.cuentas-cliente li > div {
+    flex: 1 1 12rem;
+}
+
+.cuentas-cliente p {
+    margin: 0;
+}
+
+.cuenta-tipo {
+    color: #1f3a5f;
+    font-weight: bold;
+}
+
+.cuenta-iban {
+    color: #555;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;
+}
+
+.cuenta-saldo {
+    margin-left: auto;
+    color: #1f3a5f;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.cuenta-saldo span {
+    display: block;
+    color: #666;
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+/* tarjeta bancaria dibujada con CSS */
+.tarjetas-cliente {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tarjeta-visual {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 0.5rem;
+    max-width: 340px;
+    aspect-ratio: 1.586;
+    padding: 1.1rem 1.25rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(135deg, #16324f 0%, #2d5486 60%, #1f3a5f 100%);
+    box-shadow: 0 8px 18px rgba(31, 58, 95, 0.25);
+    color: #fff;
+}
+
+.tarjeta-marca {
+    font-weight: bold;
+    letter-spacing: 0.03em;
+}
+
+.tarjeta-chip {
+    align-self: center;
+    width: 2.6rem;
+    height: 1.9rem;
+    border-radius: 0.35rem;
+    background: linear-gradient(135deg, #f6d27a 0%, #d9a531 100%);
+}
+
+.tarjeta-numero {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+}
+
+.tarjeta-pie {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    color: #dce5ef;
+    font-size: 0.85rem;
+}
+
+.tarjeta-bloqueada {
+    background: linear-gradient(135deg, #4a4f57 0%, #6b717a 100%);
+}
+
+.ficha-con-tarjeta {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* icono de ingreso o gasto junto al concepto */
+.concepto-icono {
+    display: inline-grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-right: 0.4rem;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.concepto-icono .icono {
+    width: 1rem;
+    height: 1rem;
+}
+
+.concepto-icono.importe-ingreso {
+    background-color: #e1f3e6;
+}
+
+.concepto-icono.importe-gasto {
+    background-color: #fbe4e4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .enlace-flecha .icono,
+    .accesos-publicos article {
+        transition: none;
+    }
+}
+
+@media (min-width: 560px) {
+    .ventajas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .ventajas li {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .portada-foto {
+        min-height: 28rem;
+    }
+
+    .portada-foto::after {
+        background: linear-gradient(90deg, rgba(16, 33, 56, 0.92) 0%, rgba(16, 33, 56, 0.6) 50%, rgba(16, 33, 56, 0) 85%);
+    }
+
+    .portada-foto-texto {
+        align-self: center;
+        padding: 2.5rem;
+    }
+
+    .portada-foto h1 {
+        font-size: 3rem;
+    }
+
+    .bloque-foto {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .pagina-acceso {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 3rem;
+    }
+
+    .acceso-foto {
+        display: block;
+        position: sticky;
+        top: 1.5rem;
+    }
+
+    .saludo-cuenta {
+        padding: 2rem;
+    }
+
+    .ficha-con-tarjeta {
+        grid-template-columns: 320px minmax(0, 1fr);
+        align-items: start;
     }
 }

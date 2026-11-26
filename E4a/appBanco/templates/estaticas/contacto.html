@@ -1,23 +1,30 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Contacto{% endblock %}
 
 {% block content %}
 <div class="pagina-institucional">
-    <section class="cabecera-institucional" aria-labelledby="contacto-banco">
-        <h1 id="contacto-banco">Contacto</h1>
-        <p>Encuentra el canal adecuado para tus consultas sobre cuentas, tarjetas o el acceso a la banca digital.</p>
+    <section class="cabecera-institucional cabecera-con-imagen" aria-labelledby="contacto-banco">
+        <div>
+            <h1 id="contacto-banco">Contacto</h1>
+            <p>Encuentra el canal adecuado para tus consultas sobre cuentas, tarjetas o el acceso a la banca digital.</p>
+        </div>
+        <img src="{% static 'appBanco/img/fotos/contacto-deusto.jpg' %}"
+            alt="El puente de Deusto sobre la ría, con la universidad al fondo" width="1000" height="665">
     </section>
 
     <section aria-labelledby="canales-contacto">
         <h2 id="canales-contacto">Canales de atención</h2>
         <div class="canales-contacto">
             <article>
+                <span class="icono-canal">{% include 'iconos/icono.html' with nombre='correo' %}</span>
                 <h3>Atención general</h3>
                 <p>Información sobre cuentas, tarjetas y gestiones en oficina.</p>
                 <p class="correo-contacto">info@deustobanco.example</p>
             </article>
             <article>
+                <span class="icono-canal">{% include 'iconos/icono.html' with nombre='soporte' %}</span>
                 <h3>Soporte digital</h3>
                 <p>Ayuda para iniciar sesión o consultar tus movimientos en la web.</p>
                 <p class="correo-contacto">soporte@deustobanco.example</p>
@@ -28,9 +35,9 @@
     <section class="bloque-contacto" aria-labelledby="horario-oficina">
         <div>
             <h2 id="horario-oficina">Oficina principal</h2>
-            <p>Barrio de Deusto, Bilbao.</p>
+            <p class="dato-icono">{% include 'iconos/icono.html' with nombre='ubicacion' %}Barrio de Deusto, Bilbao.</p>
         </div>
-        <p><strong>Lunes a viernes</strong><br>De 9:00 a 14:00</p>
+        <p class="dato-icono">{% include 'iconos/icono.html' with nombre='reloj' %}<span><strong>Lunes a viernes</strong><br>De 9:00 a 14:00</span></p>
     </section>
 
     <section class="preguntas-contacto" aria-labelledby="preguntas-contacto">

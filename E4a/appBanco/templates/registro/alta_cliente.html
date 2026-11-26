@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Hazte cliente{% endblock %}
 
 {% block content %}
+<div class="pagina-acceso">
+<div class="acceso-formulario">
 <h1>Hazte cliente</h1>
-<p>Elige una cuenta corriente o de ahorro y configura tu acceso a la banca digital.</p>
+<p class="acceso-intro">Elige una cuenta corriente o de ahorro y configura tu acceso a la banca digital.</p>
 
 <form method="post" class="formulario">
     {% csrf_token %}
@@ -28,4 +31,16 @@
 {% include 'registro/control_contrasena.html' %}
 
 <p>¿Ya eres cliente? <a href="{% url 'login' %}">Inicia sesión</a>.</p>
+</div>
+
+<aside class="acceso-foto">
+    <img src="{% static 'appBanco/img/fotos/banca-digital.jpg' %}"
+        alt="Una persona consulta el móvil mientras trabaja con un portátil" width="1000" height="666">
+    <ul class="lista-iconos">
+        <li>{% include 'iconos/icono.html' with nombre='cuenta' %}Cuenta corriente o de ahorro, a tu elección.</li>
+        <li>{% include 'iconos/icono.html' with nombre='movil' %}Saldo y movimientos desde Mi cuenta.</li>
+        <li>{% include 'iconos/icono.html' with nombre='escudo' %}Contraseña guardada de forma segura.</li>
+    </ul>
+</aside>
+</div>
 {% endblock %}

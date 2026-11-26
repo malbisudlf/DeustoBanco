@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Inicio{% endblock %}
 
@@ -9,9 +10,10 @@
     <p>Gestión de clientes, cuentas, tarjetas y movimientos.</p>
 </section>
 
-<section class="secciones">
+<section class="secciones secciones-panel">
     {% if perms.appBanco.view_cliente %}
     <article>
+        <span class="icono-seccion">{% include 'iconos/icono.html' with nombre='equipo' %}</span>
         <h2>Clientes</h2>
         <p>Datos de contacto y saldo total de cada cliente.</p>
         <a class="boton" href="{% url 'lista_clientes' %}">Ver clientes</a>
@@ -19,6 +21,7 @@
     {% endif %}
     {% if perms.appBanco.view_cuenta %}
     <article>
+        <span class="icono-seccion">{% include 'iconos/icono.html' with nombre='cuenta' %}</span>
         <h2>Cuentas</h2>
         <p>Cuentas corrientes y de ahorro con su saldo.</p>
         <a class="boton" href="{% url 'lista_cuentas' %}">Ver cuentas</a>
@@ -26,6 +29,7 @@
     {% endif %}
     {% if perms.appBanco.view_tarjeta %}
     <article>
+        <span class="icono-seccion">{% include 'iconos/icono.html' with nombre='tarjeta' %}</span>
         <h2>Tarjetas</h2>
         <p>Tarjetas de débito y crédito, activas o bloqueadas.</p>
         <a class="boton" href="{% url 'lista_tarjetas' %}">Ver tarjetas</a>
@@ -33,6 +37,7 @@
     {% endif %}
     {% if perms.appBanco.view_movimiento %}
     <article>
+        <span class="icono-seccion">{% include 'iconos/icono.html' with nombre='movimientos' %}</span>
         <h2>Movimientos</h2>
         <p>Ingresos y gastos, con filtro por tipo y fechas.</p>
         <a class="boton" href="{% url 'lista_movimientos' %}">Ver movimientos</a>
@@ -40,31 +45,76 @@
     {% endif %}
 </section>
 {% else %}
-<section class="cabecera-institucional">
-    <h1>Deusto Banco</h1>
-    <p>Abre tu cuenta y consulta el saldo y tus movimientos desde tu área privada.</p>
-    {% if user.is_authenticated %}
-        <a class="boton" href="{% url 'mi_cuenta' %}">Ir a mi cuenta</a>
-    {% else %}
-        <a class="boton" href="{% url 'alta_cliente' %}">Hazte cliente</a>
-    {% endif %}
+<section class="portada-foto" aria-labelledby="titulo-portada">
+    <img src="{% static 'appBanco/img/fotos/portada-ria-deusto.jpg' %}"
+        alt="La ría de Bilbao a su paso por Deusto en un día soleado" width="1600" height="938">
+    <div class="portada-foto-texto">
+        <p class="antetitulo">Banca cercana desde Bilbao</p>
+        <h1 id="titulo-portada">Deusto Banco</h1>
+        <p>Abre tu cuenta y consulta el saldo y tus movimientos desde tu área privada.</p>
+        <div class="acciones-portada">
+            {% if user.is_authenticated %}
+                <a class="boton boton-destacado" href="{% url 'mi_cuenta' %}">Ir a mi cuenta</a>
+            {% else %}
+                <a class="boton boton-destacado" href="{% url 'alta_cliente' %}">Hazte cliente</a>
+                <a class="boton boton-claro" href="{% url 'login' %}">Iniciar sesión</a>
+            {% endif %}
+        </div>
+    </div>
 </section>
 
-<section class="secciones accesos-publicos">
+<ul class="ventajas" aria-label="Ventajas de Deusto Banco">
+    <li>
+        <span class="icono-ventaja">{% include 'iconos/icono.html' with nombre='cuenta' %}</span>
+        <div><strong>Cuenta corriente o de ahorro</strong><p>Elige la que mejor se adapta a ti al darte de alta.</p></div>
+    </li>
+    <li>
+        <span class="icono-ventaja">{% include 'iconos/icono.html' with nombre='tarjeta' %}</span>
+        <div><strong>Tus tarjetas a la vista</strong><p>Comprueba si están activas y cuándo caducan.</p></div>
+    </li>
+    <li>
+        <span class="icono-ventaja">{% include 'iconos/icono.html' with nombre='escudo' %}</span>
+        <div><strong>Acceso protegido</strong><p>Tu área privada solo se abre con tu usuario y contraseña.</p></div>
+    </li>
+</ul>
+
+<section class="bloque-foto" aria-labelledby="titulo-banca-digital">
+    <img src="{% static 'appBanco/img/fotos/banca-digital.jpg' %}"
+        alt="Una persona consulta el móvil mientras trabaja con un portátil" width="1000" height="666" loading="lazy">
+    <div>
+        <h2 id="titulo-banca-digital">Tu banco, también en casa</h2>
+        <p>Desde Mi cuenta ves el saldo de cada cuenta, el estado de tus tarjetas y tus diez
+            movimientos más recientes, sin pasar por la oficina.</p>
+        <a class="enlace-flecha" href="{% if user.is_authenticated %}{% url 'mi_cuenta' %}{% else %}{% url 'login' %}{% endif %}">
+            Entrar en la banca digital {% include 'iconos/icono.html' with nombre='flecha' %}
+        </a>
+    </div>
+</section>
+
+<section class="secciones accesos-publicos" aria-label="Más sobre Deusto Banco">
     <article>
-        <h2>El banco</h2>
-        <p>Conoce nuestra historia y nuestra red de sucursales.</p>
-        <a href="{% url 'sobre' %}">Conocer Deusto Banco</a>
+        <img src="{% static 'appBanco/img/fotos/sobre-bilbao.jpg' %}" alt="" width="1200" height="750" loading="lazy">
+        <div>
+            <h2>El banco</h2>
+            <p>Conoce nuestra historia y nuestra red de sucursales.</p>
+            <a class="enlace-flecha" href="{% url 'sobre' %}">Conocer Deusto Banco {% include 'iconos/icono.html' with nombre='flecha' %}</a>
+        </div>
     </article>
     <article>
-        <h2>Becas y promociones</h2>
-        <p>Ayudas para estudiar y ventajas en comercios y actividades culturales.</p>
-        <a href="{% url 'becas_promociones' %}">Ver becas y promociones</a>
+        <img src="{% static 'appBanco/img/fotos/beca-material.jpg' %}" alt="" width="1000" height="666" loading="lazy">
+        <div>
+            <h2>Becas y promociones</h2>
+            <p>Ayudas para estudiar y ventajas en comercios y actividades culturales.</p>
+            <a class="enlace-flecha" href="{% url 'becas_promociones' %}">Ver becas y promociones {% include 'iconos/icono.html' with nombre='flecha' %}</a>
+        </div>
     </article>
     <article>
-        <h2>Contacto</h2>
-        <p>Consulta los canales de atención y las preguntas frecuentes.</p>
-        <a href="{% url 'contacto' %}">Ver opciones de contacto</a>
+        <img src="{% static 'appBanco/img/fotos/contacto-deusto.jpg' %}" alt="" width="1000" height="665" loading="lazy">
+        <div>
+            <h2>Contacto</h2>
+            <p>Consulta los canales de atención y las preguntas frecuentes.</p>
+            <a class="enlace-flecha" href="{% url 'contacto' %}">Ver opciones de contacto {% include 'iconos/icono.html' with nombre='flecha' %}</a>
+        </div>
     </article>
 </section>
 {% endif %}

@@ -1,21 +1,33 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Iniciar sesión{% endblock %}
 
 {% block content %}
-<h1>Iniciar sesión</h1>
+<div class="pagina-acceso">
+    <div class="acceso-formulario">
+        <h1>Iniciar sesión</h1>
+        <p class="acceso-intro">Entra en tu área privada para consultar tus cuentas, tarjetas y movimientos.</p>
 
-<form method="post" class="formulario">
-  {% csrf_token %}
-  {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
-  <fieldset>
-    <legend>Datos de acceso</legend>
-    {{ form.as_p }}
-  </fieldset>
-  <button type="submit">Entrar</button>
-</form>
-{% include 'registro/control_contrasena.html' %}
-{% if not user.is_authenticated %}
-    <p>¿Todavía no tienes cuenta? <a href="{% url 'alta_cliente' %}">Hazte cliente</a>.</p>
-{% endif %}
+        <form method="post" class="formulario">
+          {% csrf_token %}
+          {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+          <fieldset>
+            <legend>Datos de acceso</legend>
+            {{ form.as_p }}
+          </fieldset>
+          <button type="submit">Entrar</button>
+        </form>
+        {% include 'registro/control_contrasena.html' %}
+        {% if not user.is_authenticated %}
+            <p>¿Todavía no tienes cuenta? <a href="{% url 'alta_cliente' %}">Hazte cliente</a>.</p>
+        {% endif %}
+    </div>
+
+    <aside class="acceso-foto">
+        <img src="{% static 'appBanco/img/fotos/acceso-portatil.jpg' %}"
+            alt="Manos escribiendo en un portátil sobre una mesa de madera" width="1000" height="667">
+        <p class="dato-icono">{% include 'iconos/icono.html' with nombre='candado' %}Al terminar, pulsa «Cerrar sesión» en el menú, sobre todo si usas un equipo compartido.</p>
+    </aside>
+</div>
 {% endblock %}

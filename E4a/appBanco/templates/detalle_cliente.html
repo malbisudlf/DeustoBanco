@@ -3,7 +3,7 @@
 {% block title %}{{ cliente.nombre }} {{ cliente.apellidos }}{% endblock %}
 
 {% block content %}
-<h1>{{ cliente.nombre }} {{ cliente.apellidos }}</h1>
+<h1 class="titulo-icono">{% include 'iconos/icono.html' with nombre='persona' %}{{ cliente.nombre }} {{ cliente.apellidos }}</h1>
 
 <table class="ficha">
     <tr><th scope="row">Email</th><td>{{ cliente.email }}</td></tr>

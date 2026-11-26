@@ -13,16 +13,16 @@
             <p>Hoy combinamos la atención en sucursal con una banca digital desde la que
                 puedes consultar tus cuentas, tarjetas y movimientos.</p>
         </div>
-        <img src="{% static 'appBanco/img/banco.svg' %}" alt="Ilustración de una sucursal de Deusto Banco"
-            width="320" height="200">
+        <img src="{% static 'appBanco/img/fotos/sobre-bilbao.jpg' %}"
+            alt="El museo Guggenheim y el puente de La Salve junto a la ría de Bilbao" width="1200" height="750">
     </section>
 
     <section aria-labelledby="cifras-banco">
         <h2 id="cifras-banco">El banco en cifras</h2>
         <ul class="cifras-banco">
-            <li><strong>+40</strong> sucursales</li>
-            <li><strong>4</strong> países</li>
-            <li><strong>+300</strong> empleados</li>
+            <li>{% include 'iconos/icono.html' with nombre='banco' %}<strong>+40</strong> sucursales</li>
+            <li>{% include 'iconos/icono.html' with nombre='globo' %}<strong>4</strong> países</li>
+            <li>{% include 'iconos/icono.html' with nombre='equipo' %}<strong>+300</strong> empleados</li>
         </ul>
         <p>Nuestra red de oficinas está presente en España, Portugal, Francia e Italia.</p>
     </section>

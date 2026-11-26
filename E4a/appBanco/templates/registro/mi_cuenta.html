@@ -3,59 +3,77 @@
 {% block title %}Mi cuenta{% endblock %}
 
 {% block content %}
-<h1>Mi cuenta</h1>
+<section class="saludo-cuenta">
+    <p class="antetitulo">Mi cuenta</p>
+    <h1>Hola, {{ user.first_name|default:user.username }}</h1>
+    <p>Este es el resumen de tus cuentas, tarjetas y últimos movimientos.</p>
+</section>
+
 {% for mensaje in messages %}
     <p class="mensaje" role="status">{{ mensaje }}</p>
 {% endfor %}
 
 {% if cuentas %}
-    <h2>Mis cuentas</h2>
-    <div class="contenedor-tabla">
-        <table>
-            <thead>
-                <tr><th scope="col">Identificador</th><th scope="col">Tipo</th><th scope="col" class="numero">Saldo actual</th></tr>
-            </thead>
-            <tbody>
-                {% for cuenta in cuentas %}
-                    <tr>
-                        <td>{{ cuenta.iban }}</td>
-                        <td>{{ cuenta.get_tipo_display }}</td>
-                        <td class="numero">{{ cuenta.saldo|floatformat:2 }} €</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <section aria-labelledby="titulo-mis-cuentas">
+        <h2 id="titulo-mis-cuentas">Mis cuentas</h2>
+        <ul class="cuentas-cliente">
+            {% for cuenta in cuentas %}
+                <li>
+                    <span class="icono-seccion">{% include 'iconos/icono.html' with nombre='cuenta' %}</span>
+                    <div>
+                        <p class="cuenta-tipo">Cuenta {{ cuenta.get_tipo_display|lower }}</p>
+                        <p class="cuenta-iban">{{ cuenta.iban }}</p>
+                    </div>
+                    <p class="cuenta-saldo"><span>Saldo actual</span>{{ cuenta.saldo|floatformat:2 }} €</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
 
-    <h2>Mis tarjetas</h2>
-    <ul>
-        {% for tarjeta in tarjetas %}
-            <li>{{ tarjeta.get_tipo_display }} · termina en {{ tarjeta.numero|slice:'-4:' }} · {% if tarjeta.activa %}Activa{% else %}Bloqueada{% endif %}</li>
-        {% empty %}
-            <li class="vacio">Todavía no tienes tarjetas asociadas.</li>
-        {% endfor %}
-    </ul>
+    <section aria-labelledby="titulo-mis-tarjetas">
+        <h2 id="titulo-mis-tarjetas">Mis tarjetas</h2>
+        <ul class="tarjetas-cliente">
+            {% for tarjeta in tarjetas %}
+                <li class="tarjeta-visual{% if not tarjeta.activa %} tarjeta-bloqueada{% endif %}">
+                    <span class="tarjeta-marca">Deusto Banco</span>
+                    <span class="tarjeta-chip" aria-hidden="true"></span>
+                    <span class="tarjeta-numero">•••• •••• •••• {{ tarjeta.numero|slice:'-4:' }}</span>
+                    <span class="tarjeta-pie">
+                        <span>{{ tarjeta.get_tipo_display }} · caduca {{ tarjeta.fecha_caducidad|date:'m/y' }}</span>
+                        <span class="etiqueta {% if tarjeta.activa %}etiqueta-activa{% else %}etiqueta-bloqueada{% endif %}">{% if tarjeta.activa %}Activa{% else %}Bloqueada{% endif %}</span>
+                    </span>
+                </li>
+            {% empty %}
+                <li class="vacio">Todavía no tienes tarjetas asociadas.</li>
+            {% endfor %}
+        </ul>
+    </section>
 
-    <h2>Movimientos recientes</h2>
-    <div class="contenedor-tabla">
-        <table>
-            <thead>
-                <tr><th scope="col">Fecha</th><th scope="col">Concepto</th><th scope="col">Tipo</th><th scope="col" class="numero">Importe</th></tr>
-            </thead>
-            <tbody>
-                {% for movimiento in movimientos %}
-                    <tr>
-                        <td>{{ movimiento.fecha|date:'d/m/Y' }}</td>
-                        <td>{{ movimiento.concepto }}</td>
-                        <td>{{ movimiento.get_tipo_display }}</td>
-                        <td class="numero importe-{{ movimiento.tipo }}">{{ movimiento.importe|floatformat:2 }} €</td>
-                    </tr>
-                {% empty %}
-                    <tr><td colspan="4" class="vacio">Todavía no hay movimientos.</td></tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <section aria-labelledby="titulo-movimientos-recientes">
+        <h2 id="titulo-movimientos-recientes">Movimientos recientes</h2>
+        <div class="contenedor-tabla">
+            <table>
+                <thead>
+                    <tr><th scope="col">Fecha</th><th scope="col">Concepto</th><th scope="col">Tipo</th><th scope="col" class="numero">Importe</th></tr>
+                </thead>
+                <tbody>
+                    {% for movimiento in movimientos %}
+                        <tr>
+                            <td>{{ movimiento.fecha|date:'d/m/Y' }}</td>
+                            <td>
+                                <span class="concepto-icono importe-{{ movimiento.tipo }}">{% if movimiento.tipo == 'ingreso' %}{% include 'iconos/icono.html' with nombre='ingreso' %}{% else %}{% include 'iconos/icono.html' with nombre='gasto' %}{% endif %}</span>
+                                {{ movimiento.concepto }}
+                            </td>
+                            <td><span class="etiqueta etiqueta-{{ movimiento.tipo }}">{{ movimiento.get_tipo_display }}</span></td>
+                            <td class="numero importe-{{ movimiento.tipo }}">{{ movimiento.importe|floatformat:2 }} €</td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="4" class="vacio">Todavía no hay movimientos.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 {% else %}
     <p>Este usuario todavía no tiene una cuenta bancaria asociada.</p>
 {% endif %}

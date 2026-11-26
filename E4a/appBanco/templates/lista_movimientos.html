@@ -4,7 +4,7 @@
 {% block title %}Movimientos{% endblock %}
 
 {% block content %}
-<h1>Movimientos</h1>
+<h1 class="titulo-icono">{% include 'iconos/icono.html' with nombre='movimientos' %}Movimientos</h1>
 
 <form id="filtro-movimientos" class="filtro-movimientos" method="get" action="{% url 'lista_movimientos' %}">
     {% for campo in filtro %}

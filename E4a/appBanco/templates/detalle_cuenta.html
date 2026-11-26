@@ -3,7 +3,7 @@
 {% block title %}Cuenta {{ cuenta.iban }}{% endblock %}
 
 {% block content %}
-<h1>{{ cuenta.iban }}</h1>
+<h1 class="titulo-icono">{% include 'iconos/icono.html' with nombre='cuenta' %}{{ cuenta.iban }}</h1>
 
 {% for mensaje in messages %}
     <p class="mensaje" role="status">{{ mensaje }}</p>
