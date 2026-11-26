@@ -1,0 +1,42 @@
+{% comment %}
+Fragmento con el resultado del filtro de movimientos. La página completa lo incluye dentro de
+#resultados-movimientos y la vista lo devuelve solo cuando la petición llega por AJAX.
+{% endcomment %}
+{% if filtro.errors %}
+    <ul class="errores-filtro-movimientos">
+        {% for campo in filtro %}
+            {% if campo.errors %}
+                <li id="{{ campo.auto_id }}_error">
+                    <a href="#{{ campo.id_for_label }}">{{ campo.errors|join:' ' }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    <div class="contenedor-tabla-movimientos">
+        <table class="tabla-movimientos" aria-label="Listado de movimientos">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Concepto</th>
+                    <th scope="col">Cuenta</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col" class="importe-movimiento">Importe</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movimiento in movimientos_listado %}
+                    <tr data-movimiento>
+                        <td><time datetime="{{ movimiento.fecha|date:'Y-m-d' }}">{{ movimiento.fecha|date:'d/m/Y' }}</time></td>
+                        <td><a href="{% url 'detalle_movimiento' movimiento.pk %}">{{ movimiento.concepto }}</a></td>
+                        <td>{{ movimiento.cuenta.iban }}</td>
+                        <td><span class="etiqueta etiqueta-{{ movimiento.tipo }}">{{ movimiento.get_tipo_display }}</span></td>
+                        <td class="importe-movimiento importe-{{ movimiento.tipo }}">{{ movimiento.importe|floatformat:2 }} €</td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="5">No se encontraron movimientos.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}

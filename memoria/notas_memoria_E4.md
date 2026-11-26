@@ -22,7 +22,10 @@ tarjetas siguen trayendo la cuenta asociada con `select_related`.
 
 El filtro de movimientos se apoya en el formulario `FiltroMovimientosForm`, que valida el tipo de
 movimiento y el rango de fechas antes de consultar la base de datos. La vista construye el
-`QuerySet` aplicando únicamente los filtros informados y devuelve el fragmento HTML del listado.
+`QuerySet` aplicando únicamente los filtros informados. Si la petición llega por AJAX (jQuery
+añade la cabecera `X-Requested-With`), la vista devuelve solo el fragmento HTML del listado,
+definido en la plantilla parcial `parciales/resultados_movimientos.html`; si no, devuelve la
+página completa, que incluye esa misma plantilla.
 En el cliente, siguiendo las recomendaciones del enunciado, se usa jQuery: los selectores se
 guardan al cargar la página, la petición se hace con `$.ajax` y, mientras llega la respuesta, la
 tabla se atenúa con `fadeTo`; al sustituir las filas, estas aparecen con una animación definida en

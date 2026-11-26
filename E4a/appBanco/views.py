@@ -9,6 +9,7 @@ from django.core.exceptions import PermissionDenied
 from django.db import IntegrityError
 from django.db.models import Sum
 from django.urls import reverse
+from django.utils.cache import patch_vary_headers
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.generic import DetailView, ListView, TemplateView
@@ -113,7 +114,14 @@ def lista_movimientos(request):
     else:
         movimientos = movimientos.none()
     context = {'movimientos_listado': movimientos, 'filtro': filtro}
-    return render(request, 'lista_movimientos.html', context)
+
+    # jQuery marca sus peticiones AJAX con esta cabecera: en ese caso basta con devolver
+    # el fragmento de la tabla; si no, se devuelve la página completa (funciona sin JavaScript).
+    es_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    plantilla = 'parciales/resultados_movimientos.html' if es_ajax else 'lista_movimientos.html'
+    respuesta = render(request, plantilla, context)
+    patch_vary_headers(respuesta, ['X-Requested-With'])
+    return respuesta
 
 
 @acceso_empleado('appBanco.view_movimiento')

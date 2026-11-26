@@ -1,170 +1,3261 @@
 [
-{
-  "model": "appBanco.cliente",
-  "pk": 1,
-  "fields": {
-    "nombre": "Amaia",
-    "apellidos": "Etxeberria",
-    "email": "amaia@example.com",
-    "telefono": "600111222",
-    "fecha_alta": "2026-09-15"
+  {
+    "model": "auth.user",
+    "fields": {
+      "username": "amaia",
+      "password": "pbkdf2_sha256$1500000$pTobkpXaN0J51E5i0GBDa4$VMVqDXQr0FwBImDQAT1B86IBrh84dDZ1/XpIiac6aKc=",
+      "first_name": "Amaia",
+      "last_name": "Etxeberria",
+      "email": "amaia@example.com",
+      "is_active": true,
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2026-09-15T09:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 1,
+    "fields": {
+      "nombre": "Amaia",
+      "apellidos": "Etxeberria",
+      "email": "amaia@example.com",
+      "telefono": "600111222",
+      "fecha_alta": "2026-09-15",
+      "usuario": [
+        "amaia"
+      ]
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 2,
+    "fields": {
+      "nombre": "Iker",
+      "apellidos": "Mendia",
+      "email": "iker@example.com",
+      "telefono": "600333444",
+      "fecha_alta": "2026-09-20"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 3,
+    "fields": {
+      "nombre": "César Manuel",
+      "apellidos": "Llata",
+      "email": "mrsubidito@gmail.com",
+      "telefono": "663631373",
+      "fecha_alta": "2026-11-09"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 4,
+    "fields": {
+      "nombre": "Ane",
+      "apellidos": "Goikoetxea Uriarte",
+      "email": "ane.goikoetxea@example.com",
+      "telefono": "625435003",
+      "fecha_alta": "2026-09-03"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 5,
+    "fields": {
+      "nombre": "Jon",
+      "apellidos": "Arrieta Zubizarreta",
+      "email": "jon.arrieta@example.com",
+      "telefono": "611954340",
+      "fecha_alta": "2026-09-08"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 6,
+    "fields": {
+      "nombre": "Lucía",
+      "apellidos": "Fernández Ortiz",
+      "email": "lucia.fernandez@example.com",
+      "telefono": "672517488",
+      "fecha_alta": "2026-09-12"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 7,
+    "fields": {
+      "nombre": "Unai",
+      "apellidos": "Bilbao Etxebarria",
+      "email": "unai.bilbao@example.com",
+      "telefono": "690834744",
+      "fecha_alta": "2026-09-18"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 8,
+    "fields": {
+      "nombre": "Maite",
+      "apellidos": "Larrañaga Ibarra",
+      "email": "maite.larranaga@example.com",
+      "telefono": "668951340",
+      "fecha_alta": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 9,
+    "fields": {
+      "nombre": "Pablo",
+      "apellidos": "Sánchez Ruiz",
+      "email": "pablo.sanchez@example.com",
+      "telefono": "695711388",
+      "fecha_alta": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 10,
+    "fields": {
+      "nombre": "Nerea",
+      "apellidos": "Agirre Olabarria",
+      "email": "nerea.agirre@example.com",
+      "telefono": "649632364",
+      "fecha_alta": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 11,
+    "fields": {
+      "nombre": "Mikel",
+      "apellidos": "Zabala Otxoa",
+      "email": "mikel.zabala@example.com",
+      "telefono": "686344660",
+      "fecha_alta": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.cliente",
+    "pk": 12,
+    "fields": {
+      "nombre": "Laura",
+      "apellidos": "Gómez Herrero",
+      "email": "laura.gomez@example.com",
+      "telefono": "630793342",
+      "fecha_alta": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "iban": "ES91 2100 0418 4502 0005 1332",
+      "tipo": "corriente",
+      "saldo": "4617.72",
+      "fecha_apertura": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 2,
+    "fields": {
+      "cliente": 1,
+      "iban": "ES44 2100 0418 4502 0005 1333",
+      "tipo": "ahorro",
+      "saldo": "3651.01",
+      "fecha_apertura": "2026-09-16"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 3,
+    "fields": {
+      "cliente": 2,
+      "iban": "ES77 2100 0418 4502 0005 1334",
+      "tipo": "corriente",
+      "saldo": "417.83",
+      "fecha_apertura": "2026-09-20"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 4,
+    "fields": {
+      "cliente": 3,
+      "iban": "ES9121000418450200051332",
+      "tipo": "corriente",
+      "saldo": "5.78",
+      "fecha_apertura": "2026-11-09"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 5,
+    "fields": {
+      "cliente": 4,
+      "iban": "ES85 2100 0418 7400 0005 1345",
+      "tipo": "corriente",
+      "saldo": "26.12",
+      "fecha_apertura": "2026-09-03"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 6,
+    "fields": {
+      "cliente": 4,
+      "iban": "ES07 2100 0418 6700 0005 1346",
+      "tipo": "ahorro",
+      "saldo": "1203.31",
+      "fecha_apertura": "2026-09-04"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 7,
+    "fields": {
+      "cliente": 5,
+      "iban": "ES60 2100 0418 9700 0005 1347",
+      "tipo": "corriente",
+      "saldo": "6689.43",
+      "fecha_apertura": "2026-09-08"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 8,
+    "fields": {
+      "cliente": 5,
+      "iban": "ES43 2100 0418 2800 0005 1348",
+      "tipo": "ahorro",
+      "saldo": "2704.13",
+      "fecha_apertura": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 9,
+    "fields": {
+      "cliente": 6,
+      "iban": "ES82 2100 0418 7700 0005 1349",
+      "tipo": "corriente",
+      "saldo": "156.47",
+      "fecha_apertura": "2026-09-12"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 10,
+    "fields": {
+      "cliente": 6,
+      "iban": "ES78 2100 0418 2500 0005 1350",
+      "tipo": "ahorro",
+      "saldo": "1351.64",
+      "fecha_apertura": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 11,
+    "fields": {
+      "cliente": 7,
+      "iban": "ES04 2100 0418 6800 0005 1351",
+      "tipo": "corriente",
+      "saldo": "7181.03",
+      "fecha_apertura": "2026-09-18"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 12,
+    "fields": {
+      "cliente": 7,
+      "iban": "ES76 2100 0418 9300 0005 1352",
+      "tipo": "ahorro",
+      "saldo": "2752.10",
+      "fecha_apertura": "2026-09-20"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 13,
+    "fields": {
+      "cliente": 8,
+      "iban": "ES86 2100 0418 2200 0005 1353",
+      "tipo": "corriente",
+      "saldo": "2702.75",
+      "fecha_apertura": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 14,
+    "fields": {
+      "cliente": 8,
+      "iban": "ES24 2100 0418 2100 0005 1354",
+      "tipo": "ahorro",
+      "saldo": "2700.90",
+      "fecha_apertura": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 15,
+    "fields": {
+      "cliente": 9,
+      "iban": "ES33 2100 0418 8300 0005 1355",
+      "tipo": "corriente",
+      "saldo": "327.20",
+      "fecha_apertura": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 16,
+    "fields": {
+      "cliente": 10,
+      "iban": "ES47 2100 0418 6200 0005 1356",
+      "tipo": "corriente",
+      "saldo": "5148.44",
+      "fecha_apertura": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 17,
+    "fields": {
+      "cliente": 10,
+      "iban": "ES81 2100 0418 9700 0005 1357",
+      "tipo": "ahorro",
+      "saldo": "2703.49",
+      "fecha_apertura": "2026-10-11"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 18,
+    "fields": {
+      "cliente": 11,
+      "iban": "ES19 2100 0418 9600 0005 1358",
+      "tipo": "corriente",
+      "saldo": "61.22",
+      "fecha_apertura": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 19,
+    "fields": {
+      "cliente": 11,
+      "iban": "ES02 2100 0418 2700 0005 1359",
+      "tipo": "ahorro",
+      "saldo": "653.32",
+      "fecha_apertura": "2026-10-22"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 20,
+    "fields": {
+      "cliente": 12,
+      "iban": "ES88 2100 0418 3300 0005 1360",
+      "tipo": "corriente",
+      "saldo": "2501.44",
+      "fecha_apertura": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.cuenta",
+    "pk": 21,
+    "fields": {
+      "cliente": 12,
+      "iban": "ES31 2100 0418 4600 0005 1361",
+      "tipo": "ahorro",
+      "saldo": "1202.37",
+      "fecha_apertura": "2026-10-27"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 1,
+    "fields": {
+      "cuenta": 1,
+      "numero": "4411223344556677",
+      "tipo": "debito",
+      "fecha_caducidad": "2029-06-30",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 2,
+    "fields": {
+      "cuenta": 3,
+      "numero": "5500112233449988",
+      "tipo": "credito",
+      "fecha_caducidad": "2028-11-30",
+      "activa": true,
+      "limite_diario": "1500.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 3,
+    "fields": {
+      "cuenta": 4,
+      "numero": "4532123456789012",
+      "tipo": "credito",
+      "fecha_caducidad": "2031-11-09",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 4,
+    "fields": {
+      "cuenta": 5,
+      "numero": "4813998698797309",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 5,
+    "fields": {
+      "cuenta": 7,
+      "numero": "4753645568151883",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 6,
+    "fields": {
+      "cuenta": 7,
+      "numero": "5940557616987161",
+      "tipo": "credito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "2000.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 7,
+    "fields": {
+      "cuenta": 9,
+      "numero": "4469788093208193",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 8,
+    "fields": {
+      "cuenta": 11,
+      "numero": "4784864887663444",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": false,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 9,
+    "fields": {
+      "cuenta": 11,
+      "numero": "5978753477876800",
+      "tipo": "credito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "1500.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 10,
+    "fields": {
+      "cuenta": 13,
+      "numero": "4784726714751363",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 11,
+    "fields": {
+      "cuenta": 13,
+      "numero": "5079819331908457",
+      "tipo": "credito",
+      "fecha_caducidad": "2030-09-28",
+      "activa": true,
+      "limite_diario": "1500.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 12,
+    "fields": {
+      "cuenta": 15,
+      "numero": "4728379298416224",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 13,
+    "fields": {
+      "cuenta": 16,
+      "numero": "4628360161055001",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 14,
+    "fields": {
+      "cuenta": 16,
+      "numero": "5475177992298365",
+      "tipo": "credito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "1500.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 15,
+    "fields": {
+      "cuenta": 18,
+      "numero": "4186032080737027",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 16,
+    "fields": {
+      "cuenta": 20,
+      "numero": "4646861642524778",
+      "tipo": "debito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "600.00"
+    }
+  },
+  {
+    "model": "appBanco.tarjeta",
+    "pk": 17,
+    "fields": {
+      "cuenta": 20,
+      "numero": "5725877188413300",
+      "tipo": "credito",
+      "fecha_caducidad": "2030-10-28",
+      "activa": true,
+      "limite_diario": "1500.00"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 1,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Nómina septiembre",
+      "tipo": "ingreso",
+      "importe": "1850.00",
+      "fecha": "2026-09-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 2,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Alquiler septiembre",
+      "tipo": "gasto",
+      "importe": "600.00",
+      "fecha": "2026-10-02"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 3,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Compra supermercado",
+      "tipo": "gasto",
+      "importe": "84.35",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 4,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Transferencia recibida",
+      "tipo": "ingreso",
+      "importe": "120.00",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 5,
+    "fields": {
+      "cuenta": 4,
+      "concepto": "Multa Letonia",
+      "tipo": "gasto",
+      "importe": "200.00",
+      "fecha": "2026-11-09"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 6,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Nómina octubre",
+      "tipo": "ingreso",
+      "importe": "2100.00",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 7,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "53.10",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 8,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 9,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Nómina noviembre",
+      "tipo": "ingreso",
+      "importe": "1820.00",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 10,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "73.56",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 11,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 12,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "35.19",
+      "fecha": "2026-10-07"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 13,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 14,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "11.10",
+      "fecha": "2026-10-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 15,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "61.29",
+      "fecha": "2026-10-23"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 16,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "30.38",
+      "fecha": "2026-10-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 17,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 18,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 19,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "12.65",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 20,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 21,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 22,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "12.64",
+      "fecha": "2026-11-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 23,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "28.64",
+      "fecha": "2026-11-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 24,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "15.12",
+      "fecha": "2026-11-22"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 25,
+    "fields": {
+      "cuenta": 1,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "40.59",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 26,
+    "fields": {
+      "cuenta": 2,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 27,
+    "fields": {
+      "cuenta": 2,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 28,
+    "fields": {
+      "cuenta": 2,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "1.01",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 29,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 30,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "12.46",
+      "fecha": "2026-10-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 31,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "59.50",
+      "fecha": "2026-10-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 32,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "24.71",
+      "fecha": "2026-10-22"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 33,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 34,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "89.73",
+      "fecha": "2026-11-03"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 35,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "27.06",
+      "fecha": "2026-11-07"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 36,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "44.31",
+      "fecha": "2026-11-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 37,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 38,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 39,
+    "fields": {
+      "cuenta": 3,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "21.63",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 40,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "300.00",
+      "fecha": "2026-09-03"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 41,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 42,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 43,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "75.52",
+      "fecha": "2026-09-09"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 44,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "25.47",
+      "fecha": "2026-09-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 45,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "33.80",
+      "fecha": "2026-09-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 46,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "45.21",
+      "fecha": "2026-09-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 47,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "54.73",
+      "fecha": "2026-09-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 48,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "15.97",
+      "fecha": "2026-09-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 49,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "17.77",
+      "fecha": "2026-09-29"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 50,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-10-02"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 51,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "71.31",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 52,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 53,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-10-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 54,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "44.38",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 55,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "20.71",
+      "fecha": "2026-10-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 56,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "33.61",
+      "fecha": "2026-10-29"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 57,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Compra BM Supermercados",
+      "tipo": "gasto",
+      "importe": "61.18",
+      "fecha": "2026-11-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 58,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "42.24",
+      "fecha": "2026-11-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 59,
+    "fields": {
+      "cuenta": 5,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 60,
+    "fields": {
+      "cuenta": 6,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1000.00",
+      "fecha": "2026-09-03"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 61,
+    "fields": {
+      "cuenta": 6,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 62,
+    "fields": {
+      "cuenta": 6,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 63,
+    "fields": {
+      "cuenta": 6,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "3.31",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 64,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1200.00",
+      "fecha": "2026-09-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 65,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Nómina septiembre",
+      "tipo": "ingreso",
+      "importe": "1820.00",
+      "fecha": "2026-09-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 66,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Nómina octubre",
+      "tipo": "ingreso",
+      "importe": "2340.00",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 67,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "64.17",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 68,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 69,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Nómina noviembre",
+      "tipo": "ingreso",
+      "importe": "2100.00",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 70,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "73.19",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 71,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 72,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "64.02",
+      "fecha": "2026-09-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 73,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "38.06",
+      "fecha": "2026-09-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 74,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Cine Golem Alhóndiga",
+      "tipo": "gasto",
+      "importe": "15.64",
+      "fecha": "2026-09-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 75,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 76,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "13.76",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 77,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "22.12",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 78,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "25.53",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 79,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "41.54",
+      "fecha": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 80,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 81,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "19.12",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 82,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "27.87",
+      "fecha": "2026-10-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 83,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "62.34",
+      "fecha": "2026-10-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 84,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "21.45",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 85,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "29.79",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 86,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 87,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "38.67",
+      "fecha": "2026-11-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 88,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "40.30",
+      "fecha": "2026-11-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 89,
+    "fields": {
+      "cuenta": 7,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "16.21",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 90,
+    "fields": {
+      "cuenta": 8,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2500.00",
+      "fecha": "2026-09-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 91,
+    "fields": {
+      "cuenta": 8,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 92,
+    "fields": {
+      "cuenta": 8,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 93,
+    "fields": {
+      "cuenta": 8,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "4.13",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 94,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "300.00",
+      "fecha": "2026-09-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 95,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 96,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "250.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 97,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "9.22",
+      "fecha": "2026-09-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 98,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "19.76",
+      "fecha": "2026-09-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 99,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "64.39",
+      "fecha": "2026-09-23"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 100,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "23.74",
+      "fecha": "2026-09-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 101,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "28.05",
+      "fecha": "2026-10-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 102,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "17.87",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 103,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "10.71",
+      "fecha": "2026-10-09"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 104,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "58.37",
+      "fecha": "2026-10-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 105,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "49.35",
+      "fecha": "2026-10-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 106,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "14.32",
+      "fecha": "2026-10-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 107,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "43.62",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 108,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Compra BM Supermercados",
+      "tipo": "gasto",
+      "importe": "69.18",
+      "fecha": "2026-10-23"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 109,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Compra BM Supermercados",
+      "tipo": "gasto",
+      "importe": "63.07",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 110,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "20.66",
+      "fecha": "2026-10-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 111,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-03"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 112,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Cine Golem Alhóndiga",
+      "tipo": "gasto",
+      "importe": "9.45",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 113,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "18.29",
+      "fecha": "2026-11-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 114,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "32.49",
+      "fecha": "2026-11-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 115,
+    "fields": {
+      "cuenta": 9,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 116,
+    "fields": {
+      "cuenta": 10,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1000.00",
+      "fecha": "2026-09-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 117,
+    "fields": {
+      "cuenta": 10,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 118,
+    "fields": {
+      "cuenta": 10,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 119,
+    "fields": {
+      "cuenta": 10,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "1.64",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 120,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1200.00",
+      "fecha": "2026-09-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 121,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Nómina septiembre",
+      "tipo": "ingreso",
+      "importe": "2100.00",
+      "fecha": "2026-09-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 122,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Nómina octubre",
+      "tipo": "ingreso",
+      "importe": "2340.00",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 123,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "56.73",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 124,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 125,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Nómina noviembre",
+      "tipo": "ingreso",
+      "importe": "2100.00",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 126,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "49.94",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 127,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 128,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "22.35",
+      "fecha": "2026-09-23"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 129,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-09-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 130,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-09-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 131,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "77.21",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 132,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "11.54",
+      "fecha": "2026-10-10"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 133,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 134,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "16.58",
+      "fecha": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 135,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "12.39",
+      "fecha": "2026-10-23"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 136,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "12.91",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 137,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "13.32",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 138,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "62.03",
+      "fecha": "2026-11-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 139,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "21.49",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 140,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "12.72",
+      "fecha": "2026-11-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 141,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 142,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 143,
+    "fields": {
+      "cuenta": 11,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 144,
+    "fields": {
+      "cuenta": 12,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2500.00",
+      "fecha": "2026-09-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 145,
+    "fields": {
+      "cuenta": 12,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 146,
+    "fields": {
+      "cuenta": 12,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 147,
+    "fields": {
+      "cuenta": 12,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "2.10",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 148,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2000.00",
+      "fecha": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 149,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Factura cliente 438",
+      "tipo": "ingreso",
+      "importe": "780.00",
+      "fecha": "2026-10-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 150,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Cuota autónomos Seguridad Social",
+      "tipo": "gasto",
+      "importe": "294.00",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 151,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "72.15",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 152,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 153,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Factura cliente 841",
+      "tipo": "ingreso",
+      "importe": "1250.00",
+      "fecha": "2026-11-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 154,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Cuota autónomos Seguridad Social",
+      "tipo": "gasto",
+      "importe": "294.00",
+      "fecha": "2026-11-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 155,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "38.39",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 156,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 157,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "31.39",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 158,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "45.06",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 159,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "75.58",
+      "fecha": "2026-10-10"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 160,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "82.80",
+      "fecha": "2026-10-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 161,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "27.62",
+      "fecha": "2026-10-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 162,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-22"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 163,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "6.43",
+      "fecha": "2026-10-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 164,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-10-29"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 165,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "44.47",
+      "fecha": "2026-11-02"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 166,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "59.24",
+      "fecha": "2026-11-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 167,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-10"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 168,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "18.25",
+      "fecha": "2026-11-12"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 169,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Cine Golem Alhóndiga",
+      "tipo": "gasto",
+      "importe": "10.48",
+      "fecha": "2026-11-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 170,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "35.11",
+      "fecha": "2026-11-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 171,
+    "fields": {
+      "cuenta": 13,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "35.49",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 172,
+    "fields": {
+      "cuenta": 14,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2500.00",
+      "fecha": "2026-09-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 173,
+    "fields": {
+      "cuenta": 14,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-10-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 174,
+    "fields": {
+      "cuenta": 14,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "100.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 175,
+    "fields": {
+      "cuenta": 14,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "0.90",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 176,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "300.00",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 177,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-10-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 178,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 179,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "60.70",
+      "fecha": "2026-10-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 180,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Cine Golem Alhóndiga",
+      "tipo": "gasto",
+      "importe": "15.89",
+      "fecha": "2026-10-07"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 181,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "14.34",
+      "fecha": "2026-10-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 182,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Cine Golem Alhóndiga",
+      "tipo": "gasto",
+      "importe": "11.06",
+      "fecha": "2026-10-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 183,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "41.26",
+      "fecha": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 184,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "10.54",
+      "fecha": "2026-10-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 185,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "26.73",
+      "fecha": "2026-10-30"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 186,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "13.68",
+      "fecha": "2026-11-04"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 187,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "72.59",
+      "fecha": "2026-11-10"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 188,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "15.82",
+      "fecha": "2026-11-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 189,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "29.20",
+      "fecha": "2026-11-19"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 190,
+    "fields": {
+      "cuenta": 15,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-11-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 191,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1200.00",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 192,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Nómina octubre",
+      "tipo": "ingreso",
+      "importe": "2340.00",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 193,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "60.81",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 194,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-10-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 195,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Nómina noviembre",
+      "tipo": "ingreso",
+      "importe": "2100.00",
+      "fecha": "2026-11-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 196,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "56.10",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 197,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 198,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "10.35",
+      "fecha": "2026-10-10"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 199,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "76.87",
+      "fecha": "2026-10-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 200,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "59.32",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 201,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Suscripción Spotify",
+      "tipo": "gasto",
+      "importe": "10.99",
+      "fecha": "2026-10-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 202,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "10.29",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 203,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "14.29",
+      "fecha": "2026-11-03"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 204,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "22.84",
+      "fecha": "2026-11-09"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 205,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 206,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "23.97",
+      "fecha": "2026-11-18"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 207,
+    "fields": {
+      "cuenta": 16,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "29.93",
+      "fecha": "2026-11-22"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 208,
+    "fields": {
+      "cuenta": 17,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2500.00",
+      "fecha": "2026-10-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 209,
+    "fields": {
+      "cuenta": 17,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 210,
+    "fields": {
+      "cuenta": 17,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "3.49",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 211,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "300.00",
+      "fecha": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 212,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Transferencia familia",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-01"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 213,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "41.15",
+      "fecha": "2026-10-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 214,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "24.36",
+      "fecha": "2026-10-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 215,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "81.13",
+      "fecha": "2026-10-26"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 216,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Metro Bilbao - recarga Barik",
+      "tipo": "gasto",
+      "importe": "25.79",
+      "fecha": "2026-10-28"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 217,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "16.69",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 218,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "38.18",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 219,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Bizum cena amigos",
+      "tipo": "gasto",
+      "importe": "14.66",
+      "fecha": "2026-11-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 220,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Gimnasio Bilbao Kirolak",
+      "tipo": "gasto",
+      "importe": "30.00",
+      "fecha": "2026-11-13"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 221,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "33.16",
+      "fecha": "2026-11-16"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 222,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "68.51",
+      "fecha": "2026-11-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 223,
+    "fields": {
+      "cuenta": 18,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "15.15",
+      "fecha": "2026-11-25"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 224,
+    "fields": {
+      "cuenta": 19,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "500.00",
+      "fecha": "2026-10-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 225,
+    "fields": {
+      "cuenta": 19,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "150.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 226,
+    "fields": {
+      "cuenta": 19,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "3.32",
+      "fecha": "2026-10-31"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 227,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "2000.00",
+      "fecha": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 228,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Factura cliente 516",
+      "tipo": "ingreso",
+      "importe": "1250.00",
+      "fecha": "2026-11-15"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 229,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Cuota autónomos Seguridad Social",
+      "tipo": "gasto",
+      "importe": "294.00",
+      "fecha": "2026-11-20"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 230,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Recibo Iberdrola",
+      "tipo": "gasto",
+      "importe": "71.30",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 231,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Recibo Euskaltel",
+      "tipo": "gasto",
+      "importe": "42.90",
+      "fecha": "2026-11-08"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 232,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Amazon",
+      "tipo": "gasto",
+      "importe": "48.04",
+      "fecha": "2026-10-24"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 233,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Compra supermercado Eroski",
+      "tipo": "gasto",
+      "importe": "29.07",
+      "fecha": "2026-10-29"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 234,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Restaurante Casco Viejo",
+      "tipo": "gasto",
+      "importe": "53.44",
+      "fecha": "2026-11-02"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 235,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Farmacia",
+      "tipo": "gasto",
+      "importe": "24.16",
+      "fecha": "2026-11-06"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 236,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Gasolinera Repsol",
+      "tipo": "gasto",
+      "importe": "41.70",
+      "fecha": "2026-11-09"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 237,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Librería Elkar",
+      "tipo": "gasto",
+      "importe": "33.89",
+      "fecha": "2026-11-11"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 238,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Ropa Zara",
+      "tipo": "gasto",
+      "importe": "79.72",
+      "fecha": "2026-11-14"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 239,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "16.62",
+      "fecha": "2026-11-17"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 240,
+    "fields": {
+      "cuenta": 20,
+      "concepto": "Bilbobus - recarga Barik",
+      "tipo": "gasto",
+      "importe": "13.72",
+      "fecha": "2026-11-22"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 241,
+    "fields": {
+      "cuenta": 21,
+      "concepto": "Ingreso inicial",
+      "tipo": "ingreso",
+      "importe": "1000.00",
+      "fecha": "2026-10-21"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 242,
+    "fields": {
+      "cuenta": 21,
+      "concepto": "Traspaso mensual a ahorro",
+      "tipo": "ingreso",
+      "importe": "200.00",
+      "fecha": "2026-11-05"
+    }
+  },
+  {
+    "model": "appBanco.movimiento",
+    "pk": 243,
+    "fields": {
+      "cuenta": 21,
+      "concepto": "Intereses cuenta ahorro",
+      "tipo": "ingreso",
+      "importe": "2.37",
+      "fecha": "2026-10-31"
+    }
   }
-},
-{
-  "model": "appBanco.cliente",
-  "pk": 2,
-  "fields": {
-    "nombre": "Iker",
-    "apellidos": "Mendia",
-    "email": "iker@example.com",
-    "telefono": "600333444",
-    "fecha_alta": "2026-09-20"
-  }
-},
-{
-  "model": "appBanco.cliente",
-  "pk": 3,
-  "fields": {
-    "nombre": "César Manuel",
-    "apellidos": "Llata",
-    "email": "mrsubidito@gmail.com",
-    "telefono": "663631373",
-    "fecha_alta": "2026-11-09"
-  }
-},
-{
-  "model": "appBanco.cuenta",
-  "pk": 1,
-  "fields": {
-    "cliente": 1,
-    "iban": "ES91 2100 0418 4502 0005 1332",
-    "tipo": "corriente",
-    "saldo": "1250.75",
-    "fecha_apertura": "2026-09-15"
-  }
-},
-{
-  "model": "appBanco.cuenta",
-  "pk": 2,
-  "fields": {
-    "cliente": 1,
-    "iban": "ES44 2100 0418 4502 0005 1333",
-    "tipo": "ahorro",
-    "saldo": "3400.00",
-    "fecha_apertura": "2026-09-16"
-  }
-},
-{
-  "model": "appBanco.cuenta",
-  "pk": 3,
-  "fields": {
-    "cliente": 2,
-    "iban": "ES77 2100 0418 4502 0005 1334",
-    "tipo": "corriente",
-    "saldo": "580.20",
-    "fecha_apertura": "2026-09-20"
-  }
-},
-{
-  "model": "appBanco.cuenta",
-  "pk": 4,
-  "fields": {
-    "cliente": 3,
-    "iban": "ES9121000418450200051332",
-    "tipo": "corriente",
-    "saldo": "5.78",
-    "fecha_apertura": "2026-11-09"
-  }
-},
-{
-  "model": "appBanco.tarjeta",
-  "pk": 1,
-  "fields": {
-    "cuenta": 1,
-    "numero": "4411223344556677",
-    "tipo": "debito",
-    "fecha_caducidad": "2029-06-30",
-    "activa": true,
-    "limite_diario": "600.00"
-  }
-},
-{
-  "model": "appBanco.tarjeta",
-  "pk": 2,
-  "fields": {
-    "cuenta": 3,
-    "numero": "5500112233449988",
-    "tipo": "credito",
-    "fecha_caducidad": "2028-11-30",
-    "activa": true,
-    "limite_diario": "1500.00"
-  }
-},
-{
-  "model": "appBanco.tarjeta",
-  "pk": 3,
-  "fields": {
-    "cuenta": 4,
-    "numero": "4532123456789012",
-    "tipo": "credito",
-    "fecha_caducidad": "2031-11-09",
-    "activa": true,
-    "limite_diario": "600.00"
-  }
-},
-{
-  "model": "appBanco.movimiento",
-  "pk": 1,
-  "fields": {
-    "cuenta": 1,
-    "concepto": "Nómina septiembre",
-    "tipo": "ingreso",
-    "importe": "1850.00",
-    "fecha": "2026-09-30"
-  }
-},
-{
-  "model": "appBanco.movimiento",
-  "pk": 2,
-  "fields": {
-    "cuenta": 1,
-    "concepto": "Alquiler septiembre",
-    "tipo": "gasto",
-    "importe": "600.00",
-    "fecha": "2026-10-02"
-  }
-},
-{
-  "model": "appBanco.movimiento",
-  "pk": 3,
-  "fields": {
-    "cuenta": 3,
-    "concepto": "Compra supermercado",
-    "tipo": "gasto",
-    "importe": "84.35",
-    "fecha": "2026-10-05"
-  }
-},
-{
-  "model": "appBanco.movimiento",
-  "pk": 4,
-  "fields": {
-    "cuenta": 3,
-    "concepto": "Transferencia recibida",
-    "tipo": "ingreso",
-    "importe": "120.00",
-    "fecha": "2026-10-08"
-  }
-},
-{
-  "model": "appBanco.movimiento",
-  "pk": 5,
-  "fields": {
-    "cuenta": 4,
-    "concepto": "Multa Letonia",
-    "tipo": "gasto",
-    "importe": "200.00",
-    "fecha": "2026-11-09"
-  }
-}
 ]
