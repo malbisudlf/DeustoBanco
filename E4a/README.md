@@ -37,7 +37,12 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-`datos_ensayo` es el juego de ensayo con clientes, cuentas, tarjetas y movimientos.
+`datos_ensayo` es el juego de ensayo: 12 clientes, 21 cuentas, 17 tarjetas y 243 movimientos
+(septiembre a noviembre de 2026), con los saldos coherentes con sus movimientos. Se puede cargar
+varias veces sin duplicar datos.
+
+El juego de ensayo incluye además un cliente de demostración para probar **Mi cuenta**:
+usuario `amaia`, contraseña `amaia-demo-2026` (solo para pruebas en local).
 
 ## Acceso a la aplicación
 
