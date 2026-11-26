@@ -183,11 +183,43 @@ h2 {
 
 /* PIE */
 #footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem 2rem;
     background-color: #1f3a5f;
     color: #fff;
-    text-align: center;
-    padding: 1em;
+    padding: 1.5rem;
     font-size: 0.9em;
+}
+
+.pie-informacion p {
+    margin: 0;
+}
+
+.pie-informacion p + p {
+    margin-top: 0.25rem;
+    color: #dce5ef;
+}
+
+.pie-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pie-enlaces a {
+    color: #fff;
+    text-underline-offset: 0.2em;
+}
+
+.pie-enlaces a:hover,
+.pie-enlaces a:focus-visible {
+    color: #ffd065;
 }
 
 /* BOTONES */
@@ -261,6 +293,51 @@ button:focus,
 
 .accesos-publicos {
     margin-top: 1.5rem;
+}
+
+@media (any-hover: hover) {
+    .accesos-publicos article {
+        transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+    }
+
+    .accesos-publicos article:hover {
+        transform: scale(1.02);
+    }
+}
+
+.colaboradores {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #dce5ef;
+}
+
+.colaboradores h2 {
+    margin: 0 0 1rem;
+    padding: 0;
+    border: 0;
+    font-size: 1.5rem;
+}
+
+.lista-colaboradores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-colaboradores li {
+    display: grid;
+    place-items: center;
+    min-height: 4.25rem;
+    padding: 0.65rem;
+    border: 1px solid #dce5ef;
+    border-radius: 0.5rem;
+    background-color: #f4f7fb;
+    color: #1f3a5f;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* TABLAS (listados y fichas de datos) */
@@ -388,6 +465,24 @@ legend {
     display: block;
     font-weight: bold;
     margin-bottom: 0.25em;
+}
+
+.campo-alta {
+    position: relative;
+}
+
+.formulario .campo-alta label {
+    padding-left: 1.5rem;
+}
+
+.icono-campo {
+    position: absolute;
+    top: 0.2rem;
+    left: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: #1f3a5f;
+    pointer-events: none;
 }
 
 .formulario input,
@@ -626,22 +721,139 @@ legend {
     margin-bottom: 0.25rem;
 }
 
-.nota-institucional {
-    color: #526172;
-    font-size: 0.9rem;
-}
-
-.canales-contacto {
+.canales-contacto,
+.programas-banco {
     display: grid;
     gap: 1rem;
 }
 
-.canales-contacto article {
+.canales-contacto article,
+.programas-banco article {
     display: flex;
     flex-direction: column;
     padding: 1.25rem;
     border: 1px solid #dce5ef;
     border-radius: 0.65rem;
+}
+
+.enlaces-programas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.enlaces-programas a {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #b8c8db;
+    border-radius: 0.4rem;
+    background-color: #fff;
+    color: #1f3a5f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.enlaces-programas a:hover,
+.enlaces-programas a:focus-visible {
+    border-color: #1f3a5f;
+    text-decoration: underline;
+}
+
+.bloque-programas {
+    padding: clamp(1rem, 3vw, 1.75rem);
+    border: 1px solid;
+    border-radius: 0.75rem;
+}
+
+.bloque-becas {
+    background-color: #edf3fa;
+    border-color: #c8d9eb;
+}
+
+.bloque-promociones {
+    background-color: #fff6e0;
+    border-color: #efd7a4;
+}
+
+.encabezado-programas {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.encabezado-programas h2 {
+    margin: 0;
+    scroll-margin-top: 1rem;
+}
+
+.icono-programas {
+    display: grid;
+    flex: 0 0 2.75rem;
+    place-items: center;
+    height: 2.75rem;
+    border-radius: 0.55rem;
+    background-color: #1f3a5f;
+    color: #fff;
+}
+
+.bloque-promociones .icono-programas {
+    background-color: #f0a500;
+    color: #1f3a5f;
+}
+
+.icono-programas svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.programas-banco article {
+    border-top: 3px solid #1f3a5f;
+    background-color: #fff;
+}
+
+.bloque-promociones .programas-banco article {
+    border-top-color: #f0a500;
+}
+
+.programas-banco p {
+    margin: 0 0 0.85rem;
+}
+
+.programas-banco .ventaja-programa {
+    align-self: flex-start;
+    padding: 0.25rem 0.55rem;
+    border-radius: 0.3rem;
+    background-color: #fff6e0;
+    color: #1f3a5f;
+    font-weight: bold;
+}
+
+.bloque-becas .ventaja-programa {
+    background-color: #edf3fa;
+}
+
+.programas-banco details {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid #dce5ef;
+}
+
+.programas-banco summary {
+    color: #1f3a5f;
+    cursor: pointer;
+}
+
+.programas-banco summary:hover,
+.programas-banco summary:focus-visible {
+    text-decoration: underline;
+}
+
+.bloque-promociones summary::marker {
+    color: #925c09;
+}
+
+.programas-banco details p {
+    margin: 0.6rem 0 0;
 }
 
 .canales-contacto p {
@@ -675,7 +887,8 @@ legend {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .canales-contacto {
+    .canales-contacto,
+    .programas-banco {
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -690,8 +903,16 @@ legend {
         padding: 2em;
     }
 
+    #footer {
+        padding-inline: 2rem;
+    }
+
     .secciones {
         flex-direction: row;
+    }
+
+    .lista-colaboradores {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .formulario {

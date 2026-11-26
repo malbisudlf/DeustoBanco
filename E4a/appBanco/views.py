@@ -136,7 +136,7 @@ def alta_cliente(request):
             form.add_error(None, 'No se pudo completar el alta. Revisa el usuario o el correo y vuelve a intentarlo.')
         else:
             iniciar_sesion(request, usuario)
-            messages.success(request, 'Tu cuenta de demostración está lista.')
+            messages.success(request, 'Tu cuenta está lista.')
             return redirect('mi_cuenta')
 
     return render(request, 'registro/alta_cliente.html', {'form': form})
@@ -163,4 +163,6 @@ class InicioSesionView(auth_views.LoginView):
 login = InicioSesionView.as_view()
 logout = auth_views.LogoutView.as_view()
 pagina_sobre = TemplateView.as_view(template_name='estaticas/sobre.html')
+pagina_becas_promociones = TemplateView.as_view(template_name='estaticas/becas_promociones.html')
 pagina_contacto = TemplateView.as_view(template_name='estaticas/contacto.html')
+pagina_aviso_demo = TemplateView.as_view(template_name='estaticas/aviso_demo.html')

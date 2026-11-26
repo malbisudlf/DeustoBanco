@@ -42,7 +42,7 @@
 {% else %}
 <section class="cabecera-institucional">
     <h1>Deusto Banco</h1>
-    <p>Abre una cuenta de demostración y consulta tu saldo desde un área privada.</p>
+    <p>Abre tu cuenta y consulta el saldo y tus movimientos desde tu área privada.</p>
     {% if user.is_authenticated %}
         <a class="boton" href="{% url 'mi_cuenta' %}">Ir a mi cuenta</a>
     {% else %}
@@ -57,10 +57,29 @@
         <a href="{% url 'sobre' %}">Conocer Deusto Banco</a>
     </article>
     <article>
+        <h2>Becas y promociones</h2>
+        <p>Ayudas para estudiar y ventajas en comercios y actividades culturales.</p>
+        <a href="{% url 'becas_promociones' %}">Ver becas y promociones</a>
+    </article>
+    <article>
         <h2>Contacto</h2>
         <p>Consulta los canales de atención y las preguntas frecuentes.</p>
         <a href="{% url 'contacto' %}">Ver opciones de contacto</a>
     </article>
 </section>
 {% endif %}
+
+<section class="colaboradores" aria-labelledby="titulo-colaboradores">
+    <h2 id="titulo-colaboradores">Colaboradores</h2>
+    <ul class="lista-colaboradores">
+        <li>Haritz Digital</li>
+        <li>Bide Pago</li>
+        <li>Argi Sistemas</li>
+        <li>Itsas Datos</li>
+        <li>Olarri Consultoría</li>
+        <li>Puerto Norte Logística</li>
+        <li>Lur Servicios</li>
+        <li>Orbe Comercio</li>
+    </ul>
+</section>
 {% endblock %}

@@ -31,6 +31,7 @@
                     <li><a href="{% url 'lista_movimientos' %}"{% if 'movimiento' in seccion %} class="activo" aria-current="location"{% endif %}>Movimientos</a></li>
                     {% endif %}
                     <li><a href="{% url 'sobre' %}"{% if seccion == 'sobre' %} class="activo" aria-current="location"{% endif %}>El banco</a></li>
+                    <li><a href="{% url 'becas_promociones' %}"{% if seccion == 'becas_promociones' %} class="activo" aria-current="location"{% endif %}>Becas y promociones</a></li>
                     <li><a href="{% url 'contacto' %}"{% if seccion == 'contacto' %} class="activo" aria-current="location"{% endif %}>Contacto</a></li>
                     {% if user.is_authenticated %}
                     {% if not user.is_staff %}
@@ -55,7 +56,17 @@
 
         <!-- PIE DE PÁGINA -->
         <footer id="footer">
-            <p>Deusto Banco - Proyecto de Ingeniería Web 2026-27</p>
+            <div class="pie-informacion">
+                <p><strong>© {% now 'Y' %} Deusto Banco</strong></p>
+                <p>Proyecto de Ingeniería Web.</p>
+            </div>
+            <nav aria-label="Enlaces del pie de página">
+                <ul class="pie-enlaces">
+                    <li><a href="{% url 'aviso_demo' %}#condiciones">Condiciones de uso</a></li>
+                    <li><a href="{% url 'aviso_demo' %}#privacidad">Privacidad</a></li>
+                    <li><a href="{% url 'contacto' %}">Contacto</a></li>
+                </ul>
+            </nav>
         </footer>
     </div>
 </body>

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Becas y promociones{% endblock %}
+
+{% block content %}
+<div class="pagina-institucional">
+    <section class="cabecera-institucional">
+        <h1>Becas y promociones</h1>
+        <p>Conoce las ayudas para estudiantes y las ventajas de los comercios y espacios culturales colaboradores.</p>
+        <nav class="enlaces-programas" aria-label="Secciones de becas y promociones">
+            <a href="#becas">Ver becas</a>
+            <a href="#promociones">Ver promociones</a>
+        </nav>
+    </section>
+
+    <section class="bloque-programas bloque-becas" aria-labelledby="becas">
+        <header class="encabezado-programas">
+            <span class="icono-programas" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                    <path d="m2 9 10-5 10 5-10 5L2 9Z M6 11v5c3 3 9 3 12 0v-5 M22 9v7"/>
+                </svg>
+            </span>
+            <h2 id="becas">Becas para estudiantes</h2>
+        </header>
+        <div class="programas-banco">
+            <article>
+                <h3>Beca Material de Estudio</h3>
+                <p class="ventaja-programa">Hasta 300 €</p>
+                <p>Ayuda para comprar libros, material de clase o equipamiento informático.</p>
+                <details>
+                    <summary>Requisitos de la beca de material</summary>
+                    <p>Dirigida a estudiantes de Bachillerato, Formación Profesional o universidad.
+                        Se pide acreditar la matrícula y presentar un presupuesto del material.</p>
+                </details>
+            </article>
+            <article>
+                <h3>Beca Movilidad</h3>
+                <p class="ventaja-programa">Hasta 500 €</p>
+                <p>Ayuda para cubrir el transporte y parte del alojamiento durante un intercambio académico.</p>
+                <details>
+                    <summary>Requisitos de la beca de movilidad</summary>
+                    <p>Para estudiantes con una plaza confirmada en un programa de intercambio.
+                        Se pide la carta de aceptación y una estimación de los gastos del viaje.</p>
+                </details>
+            </article>
+        </div>
+    </section>
+
+    <section class="bloque-programas bloque-promociones" aria-labelledby="promociones">
+        <header class="encabezado-programas">
+            <span class="icono-programas" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                    <path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4V6Z M15 6v2m0 3v2m0 3v2"/>
+                </svg>
+            </span>
+            <h2 id="promociones">Promociones</h2>
+        </header>
+        <div class="programas-banco">
+            <article>
+                <h3>Vuelta a clase</h3>
+                <p class="ventaja-programa">10 % de descuento</p>
+                <p>En libros y material escolar en librerías colaboradoras.</p>
+                <details>
+                    <summary>Condiciones de Vuelta a clase</summary>
+                    <p>Descuento de hasta 15 € por persona, presentando un carnet de estudiante vigente.
+                        Se aplica a una compra por curso.</p>
+                </details>
+            </article>
+            <article>
+                <h3>Cultura en compañía</h3>
+                <p class="ventaja-programa">2 entradas al precio de 1</p>
+                <p>Para exposiciones y visitas guiadas en centros culturales colaboradores.</p>
+                <details>
+                    <summary>Condiciones de Cultura en compañía</summary>
+                    <p>Válida en actividades seleccionadas y sujeta a disponibilidad.
+                        Las dos entradas deben ser para la misma actividad y sesión.</p>
+                </details>
+            </article>
+        </div>
+    </section>
+
+    <section class="bloque-contacto" aria-labelledby="preguntas-programas">
+        <div>
+            <h2 id="preguntas-programas">¿Tienes alguna duda?</h2>
+            <p>Consulta los canales de atención para preguntas sobre becas y promociones.</p>
+        </div>
+        <a class="boton" href="{% url 'contacto' %}">Ir a Contacto</a>
+    </section>
+</div>
+{% endblock %}

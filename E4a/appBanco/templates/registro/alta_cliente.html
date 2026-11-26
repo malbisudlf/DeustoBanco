@@ -4,24 +4,24 @@
 
 {% block content %}
 <h1>Hazte cliente</h1>
-<p>Abre una cuenta corriente o de ahorro de demostración. Usa datos ficticios para el alta.</p>
+<p>Elige una cuenta corriente o de ahorro y configura tu acceso a la banca digital.</p>
 
 <form method="post" class="formulario">
     {% csrf_token %}
     {{ form.non_field_errors }}
     <fieldset>
         <legend>Datos del cliente</legend>
-        <div>{{ form.first_name.as_field_group }}</div>
-        <div>{{ form.last_name.as_field_group }}</div>
-        <div>{{ form.email.as_field_group }}</div>
-        <div>{{ form.telefono.as_field_group }}</div>
-        <div>{{ form.tipo_cuenta.as_field_group }}</div>
+        {% include 'registro/campo_alta.html' with campo=form.first_name icono='persona' %}
+        {% include 'registro/campo_alta.html' with campo=form.last_name icono='persona' %}
+        {% include 'registro/campo_alta.html' with campo=form.email icono='correo' %}
+        {% include 'registro/campo_alta.html' with campo=form.telefono icono='telefono' %}
+        {% include 'registro/campo_alta.html' with campo=form.tipo_cuenta icono='cuenta' %}
     </fieldset>
     <fieldset>
         <legend>Datos de acceso</legend>
-        <div>{{ form.username.as_field_group }}</div>
-        <div>{{ form.password1.as_field_group }}</div>
-        <div>{{ form.password2.as_field_group }}</div>
+        {% include 'registro/campo_alta.html' with campo=form.username icono='persona' %}
+        {% include 'registro/campo_alta.html' with campo=form.password1 icono='candado' %}
+        {% include 'registro/campo_alta.html' with campo=form.password2 icono='candado' %}
     </fieldset>
     <button type="submit">Crear cuenta</button>
 </form>

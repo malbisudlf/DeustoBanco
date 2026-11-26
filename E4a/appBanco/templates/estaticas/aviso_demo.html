@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Condiciones y privacidad{% endblock %}
+
+{% block content %}
+<div class="pagina-institucional">
+    <section class="cabecera-institucional">
+        <h1>Condiciones y privacidad</h1>
+        <p>Información sobre el uso del sitio y los datos de tu cuenta.</p>
+    </section>
+
+    <section aria-labelledby="condiciones">
+        <h2 id="condiciones">Condiciones de uso</h2>
+        <p>Deusto Banco forma parte del proyecto de Ingeniería Web. Los saldos y movimientos son simulados y los canales de contacto son orientativos.
+            Usa información inventada al registrarte y al añadir movimientos.</p>
+    </section>
+
+    <section aria-labelledby="privacidad">
+        <h2 id="privacidad">Privacidad</h2>
+        <p>El alta guarda el nombre, el correo, el nombre de usuario y, si lo indicas, el teléfono,
+            junto con los datos de tu cuenta. Django protege la contraseña mediante un hash.</p>
+        <p>La aplicación usa cookies para mantener la sesión y proteger el envío de formularios.
+            Puedes cerrar la sesión desde el menú.</p>
+    </section>
+</div>
+{% endblock %}
